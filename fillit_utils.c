@@ -6,11 +6,19 @@
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:23:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 09:45:06 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/04/24 10:11:33 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+char	**error(void)
+{
+	char	**bad_board;
+
+	bad_board = ft_strsplit("invalid", ' ');
+	return (bad_board);
+}
 
 void	set_length(t_board *main_board)
 {
@@ -29,7 +37,7 @@ void	set_length(t_board *main_board)
 	main_board->tetra_count = i;
 }
 
-t_piece		*add_lst_piece(t_piece *tmp, char *buf, int i, int a)
+t_piece	*add_lst_piece(t_piece *tmp, char *buf, int i, int a)
 {
 	t_piece	*nxt;
 

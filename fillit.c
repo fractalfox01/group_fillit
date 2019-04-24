@@ -6,26 +6,12 @@
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/23 22:30:24 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/04/24 10:11:04 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-** Bad character found: creates and returns an 'invalid' array. 
-*/
-char	**error(void)
-{
-	char	**bad_board;
-
-	bad_board = ft_strsplit("invalid", ' ');
-	return (bad_board);
-}
-
-/*
-** Checks if the character read from file is a valid fillit character.
-*/
 int		is_valid_char(char c)
 {
 	if (c == '.')
@@ -55,7 +41,7 @@ t_board	*new_board(int size)
 		ft_memset(tmp, '.', (size_t)(size));
 		tmp[size] = 'Z';
 		blank_board = ft_strjoin(blank_board, tmp);
-		ft_bzero(tmp, size );
+		ft_bzero(tmp, size);
 		ft_strdel(&tmp);
 		i++;
 	}
@@ -72,7 +58,7 @@ int		read_file(char *file, t_board *n_board, int a)
 	int		i;
 	t_piece	*tmp;
 	char	*buf;
-	
+
 	fd = open(file, O_RDONLY);
 	buf = ft_strnew(21);
 	i = 0;
@@ -94,22 +80,16 @@ int		read_file(char *file, t_board *n_board, int a)
 	return (0);
 }
 
-void	make_board(t_board *main_board)
-{
-	if (main_board)
-		return ;
-}
-
 void	fillit(char *file)
 {
 	int		i;
 	t_board	*main_board;
-	
+
 	i = 0;
 	main_board = (t_board *)malloc(sizeof(t_board) * 1);
 	if (file)
 	{
-		if(read_file(file, main_board, 0) == 1)
+		if (read_file(file, main_board, 0) == 1)
 		{
 			set_length(main_board);
 			if ((i = verify_file(main_board)) > 1)
@@ -119,9 +99,8 @@ void	fillit(char *file)
 				ft_putchar('\n');
 				return ;
 			}
-		//	make_board(main_board);
 			print_pieces(main_board);
-		//	print_board(main_board);
+			//	print_board(main_board);
 		}
 		else
 			ft_putstr("What exactly are you trying to do?\n");

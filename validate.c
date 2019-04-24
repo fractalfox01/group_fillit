@@ -6,7 +6,7 @@
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:19:12 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 09:47:45 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/04/24 10:02:44 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ int	check_vertical(int i, int j, char **block)
 
 int	check_horizonal(int i, int j, char **block)
 {
-	int count = 0;
-/*
-** range limits 0 - 103
-**start index is 0, 4, 8, 12
-*/
+	int count;
+
+	count = 0;
 	if (j == 0)
 	{
 		if (is_valid_char(block[i][j + 1]) == 2)
@@ -85,7 +83,7 @@ int	check_horizonal(int i, int j, char **block)
 	return (count);
 }
 
-int		verify_tetra(char **tab, int i, int j, int hash)
+int	verify_tetra(char **tab, int i, int j, int hash)
 {
 	int	count;
 
@@ -113,7 +111,7 @@ int		verify_tetra(char **tab, int i, int j, int hash)
 	return (0);
 }
 
-int		verify_file(t_board *main_board)
+int	verify_file(t_board *main_board)
 {
 	t_piece *tmp;
 	t_piece *nxt;
