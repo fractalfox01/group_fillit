@@ -6,7 +6,7 @@
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 10:13:08 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:35:21 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ int						verify_tetra(char **tab, int i, int j, int hash);
 int						check_horizonal(int i, int j, char **block);
 int						check_vertical(int i, int j, char **block);
 int						c_chk(int k, int i, int j, char **block);
+void					normalize_blocks(t_board *main_board);
+void					generate_solution_board(t_board *main_board);
+void					solve(t_board *main_board);
 
 #endif

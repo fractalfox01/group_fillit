@@ -6,7 +6,7 @@
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 10:11:04 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:35:18 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ int		read_file(char *file, t_board *n_board, int a)
 	return (0);
 }
 
+void	bad_block(int i)
+{
+	ft_putstr("Bad block at: ");
+	ft_putnbr(i - 2);
+	ft_putchar('\n');
+}
+
 void	fillit(char *file)
 {
 	int		i;
@@ -93,25 +100,14 @@ void	fillit(char *file)
 		{
 			set_length(main_board);
 			if ((i = verify_file(main_board)) > 1)
-			{
-				ft_putstr("Bad block at: ");
-				ft_putnbr(i - 2);
-				ft_putchar('\n');
-				return ;
-			}
-			print_pieces(main_board);
-			//	print_board(main_board);
+				return (bad_block(i));
+			normalize_blocks(main_board);
+			generate_solution_board(main_board);
+			solve(main_board);
+			// print_pieces(main_board);
+			// print_board(main_board);
 		}
 		else
 			ft_putstr("What exactly are you trying to do?\n");
 	}
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		fillit(av[1]);
-	}
-	return (0);
 }
