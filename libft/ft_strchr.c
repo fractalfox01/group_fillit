@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/15 16:10:39 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/08 16:10:31 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strchr(const char *str, int c)
 {
-	if (ac == 2)
+	int		i;
+
+	i = 0;
+	while (*str)
 	{
-		fillit(av[1]);
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
-	else
-		ft_putstr("some usage text\n");
+	if (c == 0)
+		return ((char *)str);
 	return (0);
 }

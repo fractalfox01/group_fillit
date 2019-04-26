@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2018/10/31 11:54:54 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/08 16:42:43 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include <string.h>
 
-int		main(int ac, char **av)
+size_t		ft_strlen(char *str)
 {
-	if (ac == 2)
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		fillit(av[1]);
+		i++;
 	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
+	return (i);
 }

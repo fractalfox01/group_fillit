@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/19 12:14:29 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/08 16:00:22 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (ac == 2)
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = b;
+	while (i < len)
 	{
-		fillit(av[1]);
+		str[i] = c;
+		i++;
 	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
+	return (b);
 }

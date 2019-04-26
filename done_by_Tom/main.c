@@ -18,7 +18,5 @@ int		main(int ac, char **av)
 	{
 		fillit(av[1]);
 	}
-	else
-		ft_putstr("some usage text\n");
 	return (0);
 }

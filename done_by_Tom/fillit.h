@@ -39,7 +39,7 @@ t_piece					*add_lst_piece(t_piece *tmp, char *buf, int i, int a);
 void					print_board(t_board *main_board);
 void					print_pieces(t_board *mst);
 void					fillit(char *file);
-int						read_file(char *file, t_board *n_board);
+int						read_file(char *file, t_board *n_board, int a);
 t_board					*new_board(int size);
 int						is_valid_char(char c);
 char					**error(void);
