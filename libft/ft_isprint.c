@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/13 12:53:59 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/06 16:10:33 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_isprint(int c)
 {
-	if (ac == 2)
-	{
-		fillit(av[1]);
-	}
+	if ((c >= 32) && (c <= 126))
+		return (1);
 	else
-		ft_putstr("some usage text\n");
-	return (0);
+		return (0);
 }

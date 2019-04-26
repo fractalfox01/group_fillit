@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/03/06 16:19:47 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/06 16:20:02 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (ac == 2)
-	{
-		fillit(av[1]);
-	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
+	new->next = *alst;
+	*alst = new;
 }

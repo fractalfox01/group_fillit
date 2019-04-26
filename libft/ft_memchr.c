@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/21 12:11:01 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/02/21 15:07:53 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (ac == 2)
+	unsigned char	*str;
+	size_t			i;
+
+	str = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		fillit(av[1]);
+		if (str[i] == (unsigned char)c)
+			return (str + i);
+		i++;
 	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
+	return (NULL);
 }

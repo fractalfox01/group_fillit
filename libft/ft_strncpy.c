@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2018/10/30 10:03:33 by ezhukova          #+#    #+#             */
+/*   Updated: 2018/10/30 13:42:06 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(int ac, char **av)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	if (ac == 2)
+	unsigned int	s;
+
+	s = 0;
+	while ((src[s] != '\0') && s < n)
 	{
-		fillit(av[1]);
+		dest[s] = src[s];
+		s++;
 	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
+	while (s < n)
+	{
+		dest[s] = '\0';
+		s++;
+	}
+	return (dest);
 }

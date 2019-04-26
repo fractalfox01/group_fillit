@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/19 13:31:49 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/03/06 16:05:57 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	if (ac == 2)
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = s;
+	while (i < n)
 	{
-		fillit(av[1]);
+		str[i++] = 0;
 	}
-	else
-		ft_putstr("some usage text\n");
-	return (0);
 }
