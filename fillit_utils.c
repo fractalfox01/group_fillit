@@ -14,15 +14,14 @@
 
 t_piece	*add_lst_piece(t_piece *tmp, char *buf, int a)
 {
-	t_piece	*nxt;
 	int i;
 
 	i = 0;
 	tmp->next = (t_piece *)malloc(sizeof(t_piece) * 1);
-	nxt = tmp->next;
-	tmp->piece = &*ft_strsplit(buf, '\n');
+	tmp->piece = ft_strsplit(buf, '\n');
 	tmp->p_num = i++;
-	tmp = nxt;  // the same as tmp = tmp->next
+	//printf("%c\n", tmp->piece[0][2]);
+	tmp = tmp->next;
 	ft_bzero(buf, a);
 	return (tmp);
 }
