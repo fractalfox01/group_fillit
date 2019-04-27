@@ -11,84 +11,75 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
-int	c_chk(int k, int i, int j, char **block)
+int		check_vertical(int i, int j, char tab[4][5])
 {
 	int	count;
 
 	count = 0;
-	if (k % 4 != 0)
+	if (i == 0)
 	{
-		k++;
-		if (is_valid_char(block[i + 1][j]) == 2)
+		if (tab[i + 1][j] == '#')
 			count++;
 	}
-	if (i >= 0 && i % 4 != 3)
+	if (i == 3)
 	{
-		if (is_valid_char(block[i - 1][j]) == 2)
+		if (tab[i - 1][j] == '#')
 			count++;
 	}
+	if (i == 1 || i == 2)
+		{
+			if (tab[i + 1][j] == '#')
+				count++;
+			if (tab[i - 1][j] == '#')
+				count++;
+		}
 	return (count);
 }
 
-int	check_vertical(int i, int j, char **block)
+
+int		check_horizonal(int i, int j, char tab[4][5])
 {
 	int	count;
-	int	b;
-	int	k;
-	int dir;
-
-	count = 0;
-	b = 0;
-	k = 0;
-	if (i % 4 == 0 || i % 4 == 3)
-	{
-		if (i % 4 == 0)
-			dir = 1;
-		else
-			dir = -1;
-		b = i + 4;
-		i += dir;
-		if (is_valid_char(block[i][j]) == 2 && i < b)
-			count++;
-		return (count);
-	}
-	k = i;
-	return (c_chk(k, i, j, block));
-}
-
-int	check_horizonal(int i, int j, char **block)
-{
-	int count;
 
 	count = 0;
 	if (j == 0)
 	{
-		if (is_valid_char(block[i][j + 1]) == 2)
-			return (1);
-		else
-			return (0);
+		if (tab[i][j + 1] == '#')
+			count++;
 	}
 	if (j == 3)
 	{
-		if (is_valid_char(block[i][j - 1]) == 2)
-			return (1);
-		else
-			return (0);
+		if (tab[i][j - 1] == '#')
+			count++;
 	}
-	if (is_valid_char(block[i][j - 1]) == 2)
-		count++;
-	if (is_valid_char(block[i][j + 1]) == 2)
-		count++;
+	if (j == 1 || j == 2)
+		{
+			if (tab[i][j - 1] == '#')
+				count++;
+			if (tab[i][j + 1] == '#')
+				count++;
+		}
 	return (count);
 }
 
-int	verify_tetra(char **tab, int i, int j, int hash)
+int		verify_piece(char *buf)
 {
+	char tab[4][5];
+	int	i;
+	int j;
 	int	count;
+	int	hash;
 
+	hash = 0;
 	count = 0;
-	while (++i < 4 && tab)
+	i = -1;
+	j = -1;
+	if (buf[4] != '\n' || buf[9] != '\n' || buf[14] != '\n' || buf[19] != '\n')
+		return (-1);
+	ft_memcpy(tab, buf, 20);
+	while (++i < 4)
 	{
 		while (++j < 4)
 		{
@@ -96,42 +87,23 @@ int	verify_tetra(char **tab, int i, int j, int hash)
 			{
 				if (tab[i][j] == '#')
 				{
-					count += check_vertical(i, j, tab);
 					count += check_horizonal(i, j, tab);
+					count += check_vertical(i, j, tab);
 					hash++;
 				}
 			}
 			else
-				return (2);
+				return (-1);
 		}
 		j = -1;
 	}
+	printf("%d\n",count);
+	printf("%d\n",hash);
 	if ((count == 6 || count == 8) && hash == 4)
 		return (1);
 	return (0);
 }
 
-int	verify_file(t_board *main_board)
-{
-	t_piece *tmp;
-	t_piece *nxt;
-	int		a;
-	int		i;
 
-	i = 2;
-	tmp = main_board->tmp_board;
-	while (tmp)
-	{
-		nxt = tmp->next;
-		if ((a = verify_tetra(tmp->piece, -1, -1, 0)) == 0 || a == 2)
-		{
-			if (tmp->p_num != (i - 2) && a != 2)
-				return (0);
-			else
-				return (i);
-		}
-		i++;
-		tmp = nxt;
-	}
-	return (1);
-}
+
+
