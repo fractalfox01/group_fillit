@@ -16,27 +16,28 @@
 int		read_file(char *file, t_board *main_board)
 {
 	int		fd;
+	int		i;
 	int		a;
 	t_piece	*tmp;
 	char	buf[22];
 
+	i = 0;
 	fd = open(file, O_RDONLY);
 	ft_bzero(buf, 22);
 	if (fd < 0)
 		return (-1);
 	if (fd > 0)
 	{
+		main_board->tmp_board = (t_piece *)malloc(sizeof(t_piece) * 1);
+		tmp = main_board->tmp_board;
 		while ((a = read(fd, buf, 21)) == 20 || a == 21)
 		{
-			printf("this is buf \n%s\n",buf);
 			if ((a == 20) || ((a == 21) && (buf[20] == '\n')))
 			{
 				if (verify_piece(buf) == 1)
 				{
-					printf("piece is valid\n");
-					main_board->tmp_board = (t_piece *)malloc(sizeof(t_piece) * 1);
-					tmp = main_board->tmp_board;
-					tmp = add_lst_piece(tmp, buf, a);
+					tmp = add_lst_piece(tmp, buf, a, i);
+					i++;
 				}
 				else 
 					return (-1);
@@ -58,7 +59,7 @@ void	fillit(char *file)
 	{
 		if (read_file(file, main_board) == 1)
 		{
-			printf("read_file = ");
+			printf("Reading file");
 		}
 		else
 			ft_putstr("What exactly are you trying to do?\n");
