@@ -12,15 +12,11 @@
 
 #include "fillit.h"
 
-t_piece	*add_lst_piece(t_piece *tmp, char *buf, int a)
+t_piece	*add_lst_piece(t_piece *tmp, char *buf, int a, int i)
 {
-	int i;
-
-	i = 0;
 	tmp->next = (t_piece *)malloc(sizeof(t_piece) * 1);
 	tmp->piece = ft_strsplit(buf, '\n');
-	tmp->p_num = i++;
-	//printf("%c\n", tmp->piece[0][2]);
+	tmp->p_num = i;
 	tmp = tmp->next;
 	ft_bzero(buf, a);
 	return (tmp);

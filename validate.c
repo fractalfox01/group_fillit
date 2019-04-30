@@ -97,8 +97,6 @@ int		verify_piece(char *buf)
 		}
 		j = -1;
 	}
-	printf("%d\n",count);
-	printf("%d\n",hash);
 	if ((count == 6 || count == 8) && hash == 4)
 		return (1);
 	return (0);

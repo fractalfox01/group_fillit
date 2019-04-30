@@ -35,7 +35,7 @@ typedef struct			s_board
 }						t_board;
 
 void					set_length(t_board *main_board);
-t_piece					*add_lst_piece(t_piece *tmp, char *buf, int a);
+t_piece					*add_lst_piece(t_piece *tmp, char *buf, int a, int i);
 void					print_board(t_board *main_board);
 void					print_pieces(t_board *mst);
 void					fillit(char *file);
