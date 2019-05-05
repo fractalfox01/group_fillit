@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/05 11:04:47 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/05 11:21:32 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		read_file(char *file, t_board *main_board)
 int		fillit_init(t_board *main_board)
 {
 	set_dimensions(main_board);
+	normalize(main_board);
 	return (1);
 }
 

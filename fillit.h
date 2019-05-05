@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/05 11:06:17 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/05 11:20:31 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ void					solve(t_board *main_board);
 void					print_pieces(t_board *mst);
 int						verify_piece(char *buf);
 void					set_dimensions(t_board *main_board);
+void					normalize(t_board *main_board);
+void					shift_left(t_piece *tmp);
+void					shift_up(t_piece *tmp);
 
 #endif
