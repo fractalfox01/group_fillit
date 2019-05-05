@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/30 17:27:10 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/04 22:08:50 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct			s_tetfile
 {
 	char				**piece;
 	int					p_num;
+	int					width;
+	int					height;
 	struct s_tetfile	*next;
 }						t_piece;
 
@@ -37,7 +39,6 @@ typedef struct			s_board
 void					set_length(t_board *main_board);
 t_piece					*add_lst_piece(t_piece *tmp, char *buf, int a, int i);
 void					print_board(t_board *main_board);
-void					print_pieces(t_board *mst);
 void					fillit(char *file);
 int						read_file(char *file, t_board *n_board);
 t_board					*new_board(int size);
@@ -51,7 +52,7 @@ int						c_chk(int k, int i, int j, char **block); //
 void					normalize_blocks(t_board *main_board);
 void					generate_solution_board(t_board *main_board);
 void					solve(t_board *main_board);
-
+void					print_pieces(t_board *mst);
 int						verify_piece(char *buf);
 
 #endif

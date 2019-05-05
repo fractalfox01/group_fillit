@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/30 17:26:38 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/04 22:17:13 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		read_file(char *file, t_board *main_board)
 				else 
 					return (-1);
 			}
+			else
+				return (-1);
 		}
 	}
 	if (!(!(main_board->tmp_board)))
@@ -49,17 +51,106 @@ int		read_file(char *file, t_board *main_board)
 	return (0);
 }
 
+int		get_width(char **tab, int row, int col)
+{
+	int		width;
+	char	*test;
+
+	width = 0;
+	test = ft_strdup("....");
+	if (tab == NULL)
+		return (0);
+	while (row < 4)
+	{
+		while (col < 4)
+		{
+			if (tab[row][col] == '#')
+			{
+				if (test[col] == '.')
+					test[col] = '#';
+			}
+			col++;
+		}
+		col = 0;
+		row++;
+	}
+	col = 0;
+	while (test[col] != '\0')
+		if (test[col++] == '#')
+			width++;
+	return (width);
+}
+
+int		get_height(char **tab, int row, int col)
+{
+	int		height;
+	char	*test;
+
+	height = 0;
+	test = ft_strdup("....");
+	if (tab == NULL)
+		return (0);
+	while (row < 4)
+	{
+		while (col < 4)
+		{
+			if (tab[row][col] == '#')
+			{
+				if (test[row] == '.')
+					test[row] = '#';
+			}
+			col++;
+		}
+		col = 0;
+		row++;
+	}
+	col = 0;
+	while (test[col] != '\0')
+		if (test[col++] == '#')
+			height++;
+	return (height);
+}
+
+void	set_dimensions(t_board *main_board)
+{
+	t_piece	*tmp;
+	t_piece *head;
+
+	head = main_board->tmp_board;
+	if (head)
+	{
+		head->width = get_width(head->piece, 0, 0);
+		head->height = get_height(head->piece, 0, 0);
+		tmp = head->next;
+		while (tmp)
+		{
+			tmp->width = get_width(tmp->piece, 0, 0);
+			tmp->height = get_height(tmp->piece, 0, 0);
+			tmp = tmp->next;
+		}
+	}
+}
+
+int		fillit_init(t_board *main_board)
+{
+	set_dimensions(main_board);
+	return (1);
+}
 
 void	fillit(char *file)
 {
 	t_board	*main_board;
 
 	main_board = (t_board *)malloc(sizeof(t_board) * 1);
-	if (file)
+	if (file && main_board)
 	{
 		if (read_file(file, main_board) == 1)
 		{
-			printf("Reading file");
+			if (fillit_init(main_board))
+			{
+				print_pieces(main_board);
+				//solve(main_board);
+			}
 		}
 		else
 			ft_putstr("What exactly are you trying to do?\n");
