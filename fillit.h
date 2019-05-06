@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/05 11:20:31 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:45:17 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int						check_horizonal(int i, int j, char tab[4][5]);
 int						check_vertical(int i, int j, char tab[4][5]);
 int						c_chk(int k, int i, int j, char **block);
 void					normalize_blocks(t_board *main_board);
-void					generate_solution_board(t_board *main_board);
+void					generate_solution_board(t_board *main_board, int size);
 void					solve(t_board *main_board);
 void					print_pieces(t_board *mst);
 int						verify_piece(char *buf);
