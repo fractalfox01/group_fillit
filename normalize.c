@@ -63,3 +63,34 @@ void	normalize(t_board *main_board)
 	tetra_lstiter(main_board->tmp_board, norm_left);
 	tetra_lstiter(main_board->tmp_board, norm_up);
 }
+
+// void	alf(t_piece *tetra)
+// {
+
+// }
+
+// void	to_alpha(t_board *mst)
+// {
+// 	t_piece *tmp;
+// 	int		i;
+// 	int		r;
+// 	int		c;
+
+// 	i = 0;
+// 	r = -1;
+// 	c = -1;
+// 	tmp = mst->tmp_board;
+// 	while (i < (mst->tetra_count - 2))
+// 	{
+// 		tmp = get_lst_index(mst, i);
+// 		while (++r < 4)
+// 		{
+// 			while (++c < 4)
+// 			{
+// 				if (tmp->piece[r][c] == '#')
+// 					tmp->piece[r][c] == (i + 'A');
+// 			}
+// 			c = 0;
+// 		}
+// 	}
+// }

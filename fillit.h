@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/06 12:45:17 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:49:00 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct			s_tetfile
 	int					p_num;
 	int					width;
 	int					height;
+	int					x;
+	int					y;
 	struct s_tetfile	*next;
 }						t_piece;
 
@@ -33,7 +35,7 @@ typedef struct			s_board
 	char				**solved_board;
 	t_piece				*tmp_board;
 	int					tetra_count;
-	int					valid;
+	char				**valid;
 }						t_board;
 
 void					set_length(t_board *main_board);
@@ -51,6 +53,7 @@ int						check_vertical(int i, int j, char tab[4][5]);
 int						c_chk(int k, int i, int j, char **block);
 void					normalize_blocks(t_board *main_board);
 void					generate_solution_board(t_board *main_board, int size);
+t_piece					*get_lst_index(t_board *main_board, int index);
 void					solve(t_board *main_board);
 void					print_pieces(t_board *mst);
 int						verify_piece(char *buf);
@@ -58,5 +61,8 @@ void					set_dimensions(t_board *main_board);
 void					normalize(t_board *main_board);
 void					shift_left(t_piece *tmp);
 void					shift_up(t_piece *tmp);
+int						start_size(int square);
+void					to_alpha(t_board *mst);
+void    				clear_solution_board(t_board *main_board);
 
 #endif
