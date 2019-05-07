@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/05 11:21:32 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/06 15:34:45 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		read_file(char *file, t_board *main_board)
 			else
 				return (-1);
 		}
+		tmp->next = NULL;
 	}
 	if (!(!(main_board->tmp_board)))
 		return (1);
@@ -55,6 +56,8 @@ int		fillit_init(t_board *main_board)
 {
 	set_dimensions(main_board);
 	normalize(main_board);
+	to_alpha(main_board);
+	generate_solution_board(main_board, start_size(main_board->tetra_count * 4));
 	return (1);
 }
 
@@ -69,8 +72,11 @@ void	fillit(char *file)
 		{
 			if (fillit_init(main_board))
 			{
-				print_pieces(main_board);
-				//solve(main_board);
+				// print_pieces(main_board);
+				// ft_putchar('\n');
+				// print_board(main_board);
+				solve(main_board);
+				print_board(main_board);
 			}
 		}
 		else
