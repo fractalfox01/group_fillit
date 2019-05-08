@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:19:41 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/07 20:26:07 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:03:15 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int     check_spot(t_board *mst, t_piece *tetra, int row, int col)
     return (good);
 }
 
-void    clear_piece(t_board *mst, t_piece *tetra)
+int    clear_piece(t_board *mst, t_piece *tetra)
 {
     int i;
     int j;
@@ -49,7 +49,11 @@ void    clear_piece(t_board *mst, t_piece *tetra)
     i = -1;
     j = -1;
     b_max = (int)ft_strlen(mst->solved_board[0]);
-    while (++i < b_max)
+	if (!(tetra))
+		return (0);
+	else if (!(tetra->piece))
+		return (0);
+	while (++i < b_max)
     {
         while (++j < b_max)
         {
@@ -58,12 +62,25 @@ void    clear_piece(t_board *mst, t_piece *tetra)
         }
         j = -1;
     }
+	return (1);
 }
 
-int     re_seat(t_piece *tetra)
+int     re_seat(t_board *mst, t_piece *tetra)
 {
+    int len = ft_strlen(mst->solved_board[0]);
     if (tetra)
     {
+        if (tetra->y == (len + 1) && tetra->x == (len + 1))
+            return (0);
+        else if (tetra->x == (len + 1))
+        {
+            tetra->x = 0;
+            tetra->y += 1;
+        }
+        else if (tetra-> y == (len + 1))
+            return (0);
+        else
+            tetra->x += 1;
         return (1);
     }
     return (0);
@@ -74,14 +91,14 @@ int     update_coord(t_board *mst, t_piece *tetra)
     int len = ft_strlen(mst->solved_board[0]);
     if (tetra)
     {
-        if ((tetra->x + 1) >= len && (tetra->y + 1) >= len)
+        if ((tetra->x) == (len + 1) && (tetra->y) == (len + 1))
             return (0);
-        else if ((tetra->x + 1) >= len)
+        else if ((tetra->x) == (len + 1))
         {
             tetra->x = 0;
             tetra->y += 1;
         }
-        else if ((tetra->y + 1) >= len)
+        else if ((tetra->y) == (len + 1))
             return (0);
         else
             tetra->x += 1;
@@ -157,6 +174,7 @@ int    map_to_main(t_board *mst, t_piece *tetra)
 int     try_piece(t_board *mst, t_piece *tetra, int i)
 {
     int a = 0;
+    int b = 0;
 
     if (mst)
     {
@@ -169,7 +187,9 @@ int     try_piece(t_board *mst, t_piece *tetra, int i)
         // Over 0 means tetra was mapped successfully.
         if (map_to_main(mst, tetra) > 0)
         {
-            tetra = get_lst_index(mst, ++i);
+            i += 1;
+            tetra = NULL;
+            tetra = get_lst_index(mst, i);
             // recursive; try next tetra piece.
             try_piece(mst, tetra, i);
             return (1);
@@ -179,33 +199,35 @@ int     try_piece(t_board *mst, t_piece *tetra, int i)
             // tetra had bad coordinates, clearing piece off board and trying new coordinate.
             //clear_piece(mst, tetra);
             // If update_coord() == 1; then update was successful
-            if (update_coord(mst, tetra) == 1)
+            if ((b = update_coord(mst, tetra)) == 1)
             {
                 try_piece(mst, tetra, i);
                 return (1);
             } // update_coord() was unsuccessful. reset last piece.
             else
             {
-                tetra = get_lst_index(mst, --i);
-                if (re_seat(tetra) == 1)
+				tetra->x = 0;
+				tetra->y = 0;
+                i--;
+                tetra = get_lst_index(mst, i);
+                while (clear_piece(mst, tetra) == 0)
+					tetra = get_lst_index(mst, --i);
+                if (tetra->p_num == 0 && tetra->y >= (int)ft_strlen(mst->solved_board[0]))
                 {
-                    if (tetra->p_num == 0)
-                        return (0);
-                    try_piece(mst, tetra, i);
-                    return (1);
-                }
-                else
-                {
-                    // grow board size by 1
                     clear_solution_board(mst);
                     a++;
                     generate_solution_board(mst, (start_size(mst->tetra_count * 4) + a));
                     tetra = get_lst_index(mst, 0);
                     try_piece(mst, tetra, i);
-                    return (1);
                 }
+                else
+				{
+					re_seat(mst, tetra);
+                    try_piece(mst, tetra, i);
+				}
+				return (1);
             }
-            
+            return (0);
         }
         
     }
@@ -214,9 +236,15 @@ int     try_piece(t_board *mst, t_piece *tetra, int i)
 
 void	solve(t_board *mst)
 {
+    static int i = 0;
+    
     if (mst)
     {
-        try_piece(mst, mst->tmp_board, 0);
+        while (1)
+        {
+            if (try_piece(mst, mst->tmp_board, i) == 1)
+                break ;
+        }
     }
 }
 
