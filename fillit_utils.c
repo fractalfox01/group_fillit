@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:23:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/07 16:50:44 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/07 19:32:49 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	set_dimensions(t_board *main_board)
 		{
 			tmp->width = get_width(tmp->piece, 0, 0);
 			tmp->height = get_height(tmp->piece, 0, 0);
-			head->x = 0;
-			head->y = 0;
+			tmp->x = 0;
+			tmp->y = 0;
 			tmp = tmp->next;
 			i++;
 		}
