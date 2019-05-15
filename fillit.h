@@ -52,6 +52,14 @@ void					normalize_blocks(t_board *main_board);
 void					generate_solution_board(t_board *main_board);
 void					solve(t_board *main_board);
 
+// KATYA
 int						verify_piece(char *buf);
+int						*get_coordinates(char piece[4][4]);
+
+//TESTS
+
+char 					*resultToString(int result[8]);
+int 					get_coordinates_test(char piece[4][4], int result[8]);
+
 
 #endif

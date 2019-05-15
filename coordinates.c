@@ -1,30 +1,73 @@
 #include "fillit.h"
 #include <stdio.h>
 
-/*
-   0123   x/j
- 0 .##.
- 1 .##.
- 2 ....
- 3 ....
- 
+
+##..
+....
+....
+....
+
+x = 0
+y = 0
+
    0123   x/j
  0 ....
  1 .#..
  2 .#..
  3 .##.
 
- y/i
+0,0,0,1,0,2,1,2
 
- 00100111
- 01234567
- */
+char		**map_piece(int *arr, int x, int y, char **board)
+{
+	int i;
+	int arr_x;
+	int arr_y;
+
+	i = 0;
+	arr_x = 0;
+	arr_y = 1;
+	while (i < 7)
+	{
+		// already checked if empty
+		if (board[y][x] == '.')
+		{
+			board[y][x] = '#';
+		}
+		
+		while (arr_x <= 6 || arr_y <= 7)
+		{
+			if (arr[arr_x = arr_x + 2] != 0)
+			{
+				board[y][x++] = '#'
+			}
+			if (arr[arr_y = arr_y + 2] != 0)
+			{
+				board[y++][x] = '#'
+			}
+		}
+
+
+		while (arr_x <= 6)
+		{
+			if (arr[arr_x] != 0)
+			{
+				board[y][x++] = '#';
+			}
+			arr_x = arr_x + 2;
+		}
+
+
+
+		i++;
+	}
+}	
 
 
 
 
 
-int	*get_coordinates(char piece[4][4])
+int			*get_coordinates(char piece[4][4])
 {
 	int i;
 	int j;
@@ -62,55 +105,3 @@ int	*get_coordinates(char piece[4][4])
 	}
 	return (arr);
 }
-
-
-char *resultToString(int result[8])
-{
-	char *stringResult;
-	stringResult = malloc(1 * 17);
-	stringResult[0] = '[';
-	int i = -1;
-	while (++i < 8)
-	{
-		stringResult[2 * i + 1] = '0' + result[i];
-		stringResult[2 * i + 2] = ',';
-	}
-	stringResult[16] = ']';
-
-	return (stringResult);
-}
-
-int get_coordinates_test(char piece[4][4], int result[8])
-{
-	int i = 0;
-	int *ptr;
-	ptr = get_coordinates(piece);
-	while (i < 8)
-	{
-		//printf("%d\n", ptr[i]);
-		if (result[i] != ptr[i])
-		{
-			printf("Test failed: current: %s expected: %s\n", resultToString(ptr), resultToString(result));
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-int main()
-{
-	char piece[4][4] = {"....", ".#..", ".#..", ".##."};
-	int result[8] = {0, 0, 0, 1, 0, 2, 1, 3};
-	if (get_coordinates_test(piece, result) == 0){
-		printf("Test passed\n");
-	}
-	char piece2[4][4] =  {".##.", ".##.", "....", "...."};
-	int result2[8] = {0, 0, 1, 0, 0, 1, 1, 1};
-	if (get_coordinates_test(piece2, result2) == 0){
-		printf("Test passed\n");
-	}
-	return (0);
-}
-
-
