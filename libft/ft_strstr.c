@@ -3,40 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 15:26:04 by ezhukova          #+#    #+#             */
-/*   Updated: 2018/10/30 16:05:38 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/12 16:26:26 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 15:47:23 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strstr(char *str, char *to_find)
+static char	*help(char *n, char *h, char *ptr, char *needle)
 {
-	int s;
-	int f;
-	int remember;
+	size_t	counter;
+	size_t	nlen;
 
-	s = -1;
-	f = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[++s] != '\0')
+	counter = 0;
+	nlen = ft_strlen(n);
+	while (*h != '\0')
 	{
-		if (str[s] == to_find[f])
+		if (counter < nlen && *n == *h)
 		{
-			remember = s;
-			while (str[s] == to_find[f])
+			while (*n++ == *h && *h != '\0')
 			{
-				if (to_find[f + 1] == '\0')
-					return (&str[remember]);
-				s++;
-				f++;
+				counter++;
+				if (counter == 1)
+					ptr = h;
+				if (counter == nlen)
+					return (ptr);
+				h++;
 			}
-			s = remember;
-			f = 0;
+			h = ptr + 1;
+			n = (char *)needle;
 		}
+		counter = 0;
+		h++;
 	}
-	return (0);
+	return (NULL);
+}
+
+char		*ft_strstr(const char *haystack, const char *needle)
+{
+	char	*h;
+	char	*n;
+	size_t	nlen;
+	char	*ptr;
+
+	h = (char *)haystack;
+	n = (char *)needle;
+	nlen = ft_strlen(n);
+	ptr = h;
+	if (!(*n))
+		return (h);
+	return (help(n, h, ptr, (char *)needle));
 }

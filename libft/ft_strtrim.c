@@ -3,39 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 13:02:00 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 17:00:46 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/18 11:22:49 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 15:47:46 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
 char	*ft_strtrim(char const *s)
 {
-	char		*str;
-	int			i;
-	int			j;
-	int			end;
+	char	*ret;
+	int		start;
+	int		end;
+	int		i;
+	size_t	size;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	end = (int)ft_strlen(s) - 1;
-	while (s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-		i++;
-	while (end >= 0 && (s[end] == ' ' || s[end] == '\n' || s[end] == '\t'))
-		end--;
-	str = (char *)malloc(sizeof(char) * (end < i ? 1 : (end - i + 2)));
-	if (!str)
-		return (NULL);
-	j = 0;
-	while (i + j <= end)
+	if (s)
 	{
-		str[j] = s[i + j];
-		j++;
+		i = 0;
+		while (ft_whitespace(s[i]) && s[i] != '\0')
+			i++;
+		start = i;
+		while (s[i] != '\0')
+			i++;
+		i -= 1;
+		while (ft_whitespace(s[i]) && i > start)
+			i--;
+		i++;
+		end = i;
+		size = end - start;
+		ret = ft_strsub(s, start, size);
+		if (ret)
+			return (ret);
 	}
-	str[j] = '\0';
-	return (str);
+	return (NULL);
 }

@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 20:50:10 by ezhukova          #+#    #+#             */
-/*   Updated: 2018/10/29 21:14:31 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:12:58 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/14 18:26:25 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
+	int		i;
+	void	*ptr;
 
+	ptr = dest;
 	i = 0;
 	while (src[i] != '\0')
 	{
@@ -21,5 +23,5 @@ char	*ft_strcpy(char *dest, char *src)
 		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	return (ptr);
 }

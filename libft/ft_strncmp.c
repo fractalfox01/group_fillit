@@ -3,25 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 16:48:32 by ezhukova          #+#    #+#             */
-/*   Updated: 2018/10/30 18:46:56 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:14:02 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/26 13:56:49 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t c)
 {
-	unsigned int i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	int				diff;
+	int				i;
+	int				j;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	diff = *str1 - *str2;
 	i = 0;
-	while ((s1[i] == s2[i]) && i < n && s1[i] != '\0')
-	{
-		i++;
-	}
-	if (i == n)
+	j = 0;
+	if (!c)
 		return (0);
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while (diff == 0 && c-- > 0)
+	{
+		diff += str1[i] - str2[j];
+		if (diff != 0 || (str1[i] == '\0' && str2[j] == '\0'))
+			return (diff);
+		if (str1[i] != '\0')
+			i++;
+		if (str2[j] != '\0')
+			j++;
+	}
+	return (diff);
 }

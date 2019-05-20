@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/06 11:25:56 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/11 15:12:32 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/22 19:42:21 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/24 21:37:29 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*newheader;
-	t_list	*newelem;
+	t_list	*ptr;
+	t_list	*newlst;
+	t_list	*cat;
 
 	if (!lst || !f)
 		return (NULL);
-	newheader = (*f)(lst);
-	newelem = newheader;
-	while (lst->next)
+	cat = f(lst);
+	if (!(ptr = ft_lstnew(cat->content, cat->content_size)))
+		return (NULL);
+	lst = lst->next;
+	newlst = ptr;
+	while (lst)
 	{
+		cat = f(lst);
+		if (!(ptr->next = ft_lstnew(cat->content, cat->content_size)))
+			return (NULL);
+		ptr = ptr->next;
 		lst = lst->next;
-		newelem->next = (*f)(lst);
-		newelem = newelem->next;
 	}
-	newelem->next = NULL;
-	return (newheader);
+	return (newlst);
 }

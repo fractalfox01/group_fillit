@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 15:17:05 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/02/19 16:11:18 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:10:55 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 15:37:35 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	a;
-	unsigned char	*dest;
-	unsigned char	*source;
+	char		*d;
+	const char	*s;
+	void		*p;
+	void		*r;
 
-	i = 0;
-	a = c;
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
-	while (i < n)
+	d = (char *)dest;
+	s = (char *)src;
+	p = ft_memchr(src, (char)c, n);
+	if (!n)
+		return (NULL);
+	if (p != NULL)
 	{
-		dest[i] = source[i];
-		if (source[i] == a)
-		{
-			return (dst + i + 1);
-		}
-		i++;
+		ft_memcpy(d, s, p - src + 1);
+		r = ft_memchr(d, (char)c, n);
+		return ((void *)r + 1);
 	}
+	ft_memcpy(d, s, n);
 	return (NULL);
 }

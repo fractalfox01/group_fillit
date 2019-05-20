@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_strbuild.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 13:25:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/01 17:02:32 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/22 17:34:02 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/23 23:42:56 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+char	**ft_strbuild(char **tab, char const *s, char c, int max)
 {
-	int		max;
-	char	**tab;
+	int	b;
+	int	i;
+	int	len;
 
-	if (s && c)
+	b = 0;
+	i = 0;
+	len = 0;
+	while (b < max && s[i] != '\0')
 	{
-		max = ft_wordcount((char *)s, c);
-		tab = (char **)malloc(sizeof(s) * (max + 1));
-		if (max < 0)
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		if (s[i] != '\0')
 		{
-			tab = (char **)malloc(sizeof(s) * 1);
-			tab[0] = NULL;
-			return (tab);
+			len = ft_strxlen(&s[i], c);
+			tab[b] = ft_strnew(len + 1);
+			if (!(tab[b]))
+				return (NULL);
+			ft_strncpy(tab[b++], &s[i], len);
+			i += ft_strxlen(&s[i], c);
 		}
-		if (!tab)
-			return (NULL);
-		tab = ft_strbuild(tab, s, c, max);
-		return (tab);
+		else if (s[i] == '\0' && !(tab[b] = NULL))
+			return (tab);
 	}
-	else
-	{
-		tab = (char **)malloc(sizeof(s) * 1);
-		return (tab);
-	}
+	tab[max] = NULL;
 	return (tab);
 }

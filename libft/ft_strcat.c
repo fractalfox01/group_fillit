@@ -3,30 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 14:25:13 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/02/13 14:25:28 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:12:22 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 15:42:14 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, const char *src)
-{
-	int i;
-	int j;
+#include "libft.h"
 
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
+char	*ft_strcat(char *dest, char *src)
+{
+	char	*ptr;
+	int		i;
+	int		f;
+	int		dlen;
+	int		s;
+
+	i = (int)sizeof(dest);
+	dlen = ft_strlen(dest);
+	s = (int)sizeof(src);
+	f = 0;
+	ptr = dest;
+	if (!(*src))
+		return (ptr);
+	while (*dest != '\0')
+		dest++;
+	while (*src != '\0')
 	{
-		i++;
+		*dest++ = *src++;
 	}
-	while (src[j] != '\0')
-	{
-		dest[i] = src[j];
-		j++;
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	*dest = '\0';
+	return (ptr);
 }

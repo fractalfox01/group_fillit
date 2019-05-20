@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcopy.c                                       :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 13:20:00 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/11 15:12:07 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/03/10 18:08:05 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/25 13:59:18 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcopy(void *dst, void *src, int start, int len)
+char	*ft_strpbrk(const char *str1, const char *str2)
 {
-	int				i;
-	unsigned char	*dest;
-	unsigned char	*source;
+	int		i;
+	int		j;
+	int		len;
+	char	*ret;
 
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
 	i = 0;
+	j = 0;
+	len = ft_strlen((char *)str1);
 	while (i < len)
 	{
-		dest[i] = source[start];
+		ret = (char *)str1;
+		while (str2[j] != '\0')
+		{
+			if (*ret == str2[j])
+				return (ret);
+			j++;
+		}
+		j = 0;
+		str1++;
 		i++;
-		start++;
 	}
-	dest[i] = '\0';
-	return (dst);
+	return (NULL);
 }

@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 11:47:26 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 16:01:38 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/20 17:47:10 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/20 17:53:17 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, sizeof(c));
+	if (c <= 127)
+	{
+		write(fd, &c, 1);
+	}
 }

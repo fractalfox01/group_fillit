@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 12:10:42 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/02/21 00:27:27 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/17 15:00:29 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/17 15:58:58 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <string.h>
+
+int	ft_strnlen(const char *str, size_t n)
 {
-	if (c > 31 && c < 127)
-		return (1);
-	return (0);
+	int	len;
+
+	len = 0;
+	while (str[len] != '\0' && len < (int)n)
+	{
+		len++;
+	}
+	return (len);
 }
