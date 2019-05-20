@@ -36,6 +36,31 @@ int     start_size(int square)
     return (ret);
 }
 
+void    generate_new_board(t_board *main_board, int size)
+{
+    char    *tmp;
+    char    *line;
+    int     i;
+
+    i = 0;
+    line = ft_strnew(1);
+    ft_bzero(line, 1);
+    if (main_board && size >= 1)
+    {
+        main_board->found_valid = (char **)malloc(sizeof(char *) * (size + 1));
+        while (i++ < size)
+        {
+            tmp = ft_strnew((size_t)(size + 1));
+            ft_memset(tmp, '.', (size_t)size);
+            tmp[size] = 'Z';
+            line = ft_strjoin(line, tmp);
+            free(tmp);
+            ft_bzero(tmp, (size_t)size);
+        }
+        main_board->found_valid = ft_strsplit(line, 'Z');
+    }
+}
+
 void    generate_solution_board(t_board *main_board, int size)
 {
     char    *tmp;

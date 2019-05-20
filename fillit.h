@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/07 16:49:00 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/10 18:57:38 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ typedef struct			s_tetfile
 typedef struct			s_board
 {
 	char				**solved_board;
+	char				**found_valid;
 	t_piece				*tmp_board;
 	int					tetra_count;
 	char				**valid;
 }						t_board;
 
+int						void_tetra(t_board *mst, t_piece *tetra, int a, int i);
 void					set_length(t_board *main_board);
 t_piece					*add_lst_piece(t_piece *tmp, char *buf, int a, int i);
-void					print_board(t_board *main_board);
+void					print_mst_board(t_board *main_board);
+void					print_res_board(t_board *main_board);
 void					fillit(char *file);
 int						read_file(char *file, t_board *n_board);
 t_board					*new_board(int size);
@@ -52,6 +55,7 @@ int						check_horizonal(int i, int j, char tab[4][5]);
 int						check_vertical(int i, int j, char tab[4][5]);
 int						c_chk(int k, int i, int j, char **block);
 void					normalize_blocks(t_board *main_board);
+void    				generate_new_board(t_board *main_board, int size);
 void					generate_solution_board(t_board *main_board, int size);
 t_piece					*get_lst_index(t_board *main_board, int index);
 void					solve(t_board *main_board);

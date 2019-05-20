@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 10:03:33 by ezhukova          #+#    #+#             */
-/*   Updated: 2018/10/30 13:42:06 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/14 23:06:06 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 15:45:43 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	s;
+#include <string.h>
+#include "libft.h"
 
-	s = 0;
-	while ((src[s] != '\0') && s < n)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	int	i;
+
+	i = ft_strlen((char *)src);
+	if (i > (int)n)
 	{
-		dest[s] = src[s];
-		s++;
+		return (ft_memcpy(dst, src, n));
 	}
-	while (s < n)
+	else if (i != (int)n)
 	{
-		dest[s] = '\0';
-		s++;
+		ft_memset(dst + i, '\0', n - i);
+		return (ft_memcpy(dst, src, i));
 	}
-	return (dest);
+	return (ft_memcpy(dst, src, n));
 }

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/31 11:54:54 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 16:42:43 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:13:31 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/24 17:57:16 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t		ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int i;
+	size_t	len;
 
-	i = 0;
-	while (str[i] != '\0')
+	len = 0;
+	while (str[len] != '\0')
 	{
-		i++;
+		len++;
 	}
-	return (i);
+	return (len);
 }

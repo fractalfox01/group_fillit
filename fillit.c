@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/06 15:34:45 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/10 18:48:38 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	fillit(char *file)
 				// ft_putchar('\n');
 				// print_board(main_board);
 				solve(main_board);
-				print_board(main_board);
+				ft_putstr("\nReturn\n");
+				print_mst_board(main_board);
+				ft_putstr("\n\n");
+				print_res_board(main_board);
 			}
 		}
 		else

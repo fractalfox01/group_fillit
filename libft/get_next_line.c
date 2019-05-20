@@ -3,83 +3,115 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 15:39:28 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/04/11 14:27:57 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/03/22 13:21:39 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/29 13:35:19 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-#include <stdio.h>
-#include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_get_line(char **st, char **line, int fd)
+int		null_check(char **line, char **tab)
 {
-	char			*tail;
-	int				i;
-
-	i = (ft_strchr(st[fd], '\n')) - st[fd];
-	line[0] = ft_strsub(st[fd], 0, (size_t)i);
-	if (line[0] == NULL)
-		return (NULL);
-	tail = ft_strsub(st[fd], i + 1, ft_strlen(st[fd]) - (i + 1));
-	if (tail == NULL)
-		return (NULL);
-	free(st[fd]);
-	st[fd] = tail;
-	return (st[fd]);
-}
-
-char	*clean_strjoin(char **st, int fd, char *buff)
-{
-	char			*tmp;
-
-	tmp = st[fd];
-	st[fd] = ft_strjoin(st[fd], buff);
-	ft_strdel(&tmp);
-	return (st[fd]);
-}
-
-int		check_result(int num, char **st, int fd, char **line)
-{
-	if (num < 0)
-		return (-1);
-	else if (num == 0 && (st[fd] == NULL || *st[fd] == '\0'))
-		return (0);
-	else
+	if (ft_strlen(*tab) > 0)
 	{
-		line[0] = ft_strdup(st[fd]);
-		free(st[fd]);
-		st[fd] = NULL;
+		ft_memdel((void **)line);
+		free(*line);
+		*line = ft_strjoin(*tab, "");
+		ft_bzero(*tab, ft_strlen(*tab));
 		return (1);
 	}
+	return (0);
 }
 
-int		get_next_line(const int fd, char **line)
+int		read_next_buffer(int a, char **tab, char **line, char *buf)
 {
-	char			buff[BUFF_SIZE + 1];
-	static char		*st[4068];
-	int				num;
+	int	j;
 
-	if (fd > 4068 || fd < 0 || !line || (!st[fd] && !(st[fd] = ft_strnew(1))))
-		return (-1);
-	if (ft_strchr(st[fd], '\n') != NULL)
+	j = 0;
+	buf[a] = '\0';
+	while (buf[j] != '\n' && j < (a - 1))
+		j++;
+	if (buf[j] == '\n')
 	{
-		st[fd] = ft_get_line(st, line, fd);
+		buf[j] = '\0';
+		ft_memdel((void **)line);
+		*line = ft_strjoin(*tab, buf);
+		ft_bzero(*tab, ft_strlen(*tab));
+		free(*tab);
+		if (j >= (a - 1))
+			*tab = ft_strdup("");
+		else
+			*tab = ft_strdup(buf + (j + 1));
+		free(buf);
 		return (1);
 	}
-	while ((num = read(fd, (void *)buff, BUFF_SIZE)) > 0)
+	return (0);
+}
+
+int		chomp_line(char **tab, char **line)
+{
+	char	*tmp;
+	char	*ptr;
+
+	if (!((ft_strchr(*tab, '\n')) == NULL))
 	{
-		buff[num] = '\0';
-		st[fd] = clean_strjoin(st, fd, buff);
-		if (ft_strchr(st[fd], '\n') != NULL)
-		{
-			st[fd] = ft_get_line(st, line, fd);
+		ft_memdel((void **)line);
+		tmp = ft_strchr(*tab, '\n');
+		*tmp = '\0';
+		free(*line);
+		*line = ft_strdup(*tab);
+		tmp++;
+		ft_bzero(*tab, ft_strlen(*tab));
+		ptr = ft_strdup(*tab);
+		*tab = ft_strjoin(ptr, tmp);
+		free(ptr);
+		return (1);
+	}
+	return (0);
+}
+
+void	set_and_free(char **tab, char **buf)
+{
+	char *ptr;
+
+	ptr = ft_strdup(*tab);
+	free(*tab);
+	*tab = ft_strjoin(ptr, *buf);
+	free(ptr);
+	ft_memset(*buf, '\0', BUFF_SIZE);
+	free(*buf);
+	*buf = ft_strnew(BUFF_SIZE + 1);
+}
+
+int		get_next_line(int fd, char **line)
+{
+	static char	*tab[FD_LIMIT];
+	char		*buf;
+	int			a;
+
+	if (fd < 0 || !(line) || BUFF_SIZE <= 0)
+		return (-1);
+	if (!(tab[fd]))
+		tab[fd] = ft_strdup("");
+	buf = ft_strnew(BUFF_SIZE + 1);
+	if (ft_strlen(tab[fd]) > 0)
+		if (chomp_line(&tab[fd], line) == 1)
 			return (1);
+	while ((a = read(fd, buf, BUFF_SIZE)) >= 0)
+	{
+		if (a == 0)
+		{
+			free(buf);
+			return (null_check(line, &tab[fd]));
 		}
+		if ((read_next_buffer(a, &tab[fd], line, buf)) == 1)
+			return (1);
+		set_and_free(&tab[fd], &buf);
 	}
-	return (check_result(num, st, fd, line));
+	return (-1);
 }

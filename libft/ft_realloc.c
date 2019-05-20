@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpush.c                                       :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/06 14:32:58 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/06 14:33:27 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/28 13:49:13 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/01 18:32:14 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstpush(t_list *head, t_list *new)
+void	*ft_realloc(void *tab, size_t size)
 {
-	if (head)
-	{
-		while (head->next)
-			head = head->next;
-		head->next = new;
-	}
-	else
-		head = new;
+	size_t	i;
+	void	*ptr;
+
+	i = 0;
+	ptr = ft_memalloc(size);
+	if (!tab || ptr)
+		return (NULL);
+	ptr = ft_memcpy(ptr, tab, sizeof(tab));
+	free(tab);
+	return (ptr);
 }

@@ -3,37 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/29 20:25:30 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/11 15:11:22 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/11 12:09:36 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/28 11:13:14 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
 int	ft_atoi(char *str)
 {
-	int result;
-	int sign;
+	int	nbr;
+	int	dir;
 
-	result = 0;
-	sign = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n'
-			|| *str == '\r' || *str == '\v' || *str == '\f')
+	nbr = 0;
+	dir = 1;
+	if (*str == 0)
+		return (0);
+	while (*str == '\f' || *str == ' ' || *str == '\n' || *str == '\r' \
+			|| *str == '\v' || *str == '\t')
+	{
 		str++;
+	}
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-		{
-			sign = (-1);
-		}
+			dir *= -1;
 		str++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (*str > 47 && *str < 58)
 	{
-		result = result * 10 + *str - '0';
+		nbr = nbr * 10 + (*str - 48);
 		str++;
 	}
-	return (result * sign);
+	return (nbr * dir);
 }

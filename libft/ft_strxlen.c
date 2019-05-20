@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_findelem.c                                      :+:      :+:    :+:   */
+/*   ft_strxlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/08 17:57:11 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 17:59:34 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/18 14:54:20 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/22 21:28:08 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-int		ft_findelem(char const *s, char c, int *index)
+int	ft_strxlen(const char *str, char c)
 {
-	int		i;
-	int		len;
+	int	i;
 
-	i = index[0];
-	len = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i] != c && s[i])
+	i = 0;
+	if (str)
 	{
-		i++;
-		len++;
+		while (str[i] != '\0' && str[i] != c)
+		{
+			i++;
+		}
 	}
-	index[0] = i;
-	return (len);
+	return (i);
 }

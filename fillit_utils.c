@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:23:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/07 19:32:49 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:44:45 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	set_dimensions(t_board *main_board)
 	t_piece *head;
 	int		i;
 
+	main_board->found_valid = NULL;
 	head = main_board->tmp_board;
 	i = 0;
 	if (head)

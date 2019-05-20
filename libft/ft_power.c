@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 12:10:42 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/02/21 00:27:27 by tvandivi         ###   ########.fr       */
+/*   Created: 2019/02/21 23:37:02 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/10 14:35:21 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+long	ft_power(long n, int base)
 {
-	if (c > 31 && c < 127)
+	long	i;
+	long	nbr;
+
+	i = 1;
+	nbr = 1;
+	if (n == 1)
 		return (1);
-	return (0);
+	if (n > 1)
+	{
+		while (i++ < n)
+			nbr *= base;
+	}
+	else
+		return (-1);
+	return (nbr);
 }

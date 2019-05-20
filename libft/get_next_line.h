@@ -3,26 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 15:39:45 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/04/11 14:34:28 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/03/22 18:39:57 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/29 13:41:42 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
 
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+# define BUFF_SIZE	42
+# define FD_LIMIT	4891
 
-char		*ft_get_line(char **store, char **line, int fd);
-char		*clean_strjoin(char **store, int fd, char *buff);
-int			check_result(int num, char **store, int fd, char **line);
-int			get_next_line(const int fd, char **line);
+int	get_next_line(const int fd, char **line);
+int	get_n_char(const int fd, char **line, int BUF_SIZE);
 
 #endif

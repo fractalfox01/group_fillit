@@ -3,40 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 15:26:04 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 16:55:23 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/17 00:27:08 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/02/26 21:42:22 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	s;
-	int		f;
-	int		remember;
+	unsigned int	i;
+	unsigned int	j;
 
-	s = -1;
-	f = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[++s] != '\0' && s < len)
+	i = 0;
+	j = ft_strlen((char *)s2);
+	if (!s1)
 	{
-		if (str[s] == to_find[f])
-		{
-			remember = s;
-			while (str[s] == to_find[f])
-			{
-				if (to_find[f + 1] == '\0' && s < len)
-					return (&str[remember]);
-				s++;
-				f++;
-			}
-			s = remember;
-			f = 0;
-		}
+		if (s1[1] == '\0')
+			return ("Segfault");
 	}
-	return (0);
+	if (!s2)
+		return ((char *)s1);
+	while (((i + j) < n + 1) && s1[i])
+	{
+		if ((ft_strncmp(&s1[i], s2, j)) == 0)
+		{
+			return ((char *)&s1[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

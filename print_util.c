@@ -64,7 +64,7 @@ void	print_pieces(t_board *mst)
 	}
 }
 
-void	print_board(t_board *main_board)
+void	print_mst_board(t_board *main_board)
 {
 	int		i;
 	
@@ -73,5 +73,21 @@ void	print_board(t_board *main_board)
 	{
 		ft_putstr(main_board->solved_board[i++]);
 		ft_putchar('\n');
+	}
+}
+
+void	print_res_board(t_board *main_board)
+{
+	int		i;
+	
+	i = 0;
+	ft_putstr("RES BOARD:\n");
+	if (main_board->found_valid)
+	{
+		while (main_board->found_valid[i] != NULL)
+		{
+			ft_putstr(main_board->found_valid[i++]);
+			ft_putchar('\n');
+		}
 	}
 }

@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 14:56:47 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 17:38:00 by ezhukova         ###   ########.fr       */
+/*   Created: 2019/02/18 01:24:21 by tvandivi          #+#    #+#             */
+/*   Updated: 2019/03/20 18:23:08 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char				*str;
-	unsigned int		i;
-	unsigned int		j;
-	size_t				len1;
-	size_t				len2;
+	int		k;
+	char	*ptr;
+	size_t	i;
+	size_t	len1;
+	size_t	len2;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = -1;
-	j = len1;
-	if (!(str = (char *)malloc(sizeof(char) * (len1 + len2) + 1)))
-		return (NULL);
-	while (s1[++i])
+	if (s1 && s2)
 	{
-		str[i] = s1[i];
+		i = -1;
+		k = 0;
+		len1 = ft_strlen((char *)s1);
+		len2 = ft_strlen((char *)s2);
+		ptr = ft_strnew((len1 + len2) + 1);
+		if (ptr)
+		{
+			while (++i < len1)
+				ptr[i] = s1[i];
+			while (i < (len1 + len2))
+				ptr[i++] = s2[k++];
+			ptr[i] = '\0';
+		}
+		return (ptr);
 	}
-	i = 0;
-	while (s2[i])
-	{
-		str[j++] = s2[i++];
-	}
-	str[len1 + len2] = '\0';
-	return (str);
+	return (NULL);
 }
