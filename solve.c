@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:19:41 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/19 15:26:56 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/19 19:35:13 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_piece *get_piece(t_board *mst, int cur)
 		return (NULL);
 	while (tmp)
 	{
-		if (tmp->p_num == index)
+		if (tmp->p_num == cur)
 			return (tmp);
 		tmp = tmp->next;
 	}
@@ -70,7 +70,7 @@ int		is_solved(t_board *mst)
 {
 	if (mst)
 	{
-		mst->tetra_count == mst->valid;
+		mst->tetra_count = mst->valid;
 		return (1);
 	}
 	return (0);
