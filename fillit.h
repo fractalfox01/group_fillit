@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/19 14:54:10 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/23 15:37:07 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct			s_board
 	int					valid;
 }						t_board;
 
+
+int     				start_size(int square);
 void					set_length(t_board *main_board);
 t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i);
 void					print_board(t_board *main_board);
@@ -61,7 +63,7 @@ void					solve(t_board *main_board);
 
 // KATYA
 int						verify_piece(t_piece *piece, char *buf);
-int						*get_coordinates(char **piece);
+int						*get_coordinates(char **piece, int i, int j);
 
 //TESTS
 

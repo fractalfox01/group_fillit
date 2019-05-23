@@ -6,21 +6,19 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/19 14:37:08 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/23 15:36:56 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int			*get_coordinates(char **piece)
+int		*get_coordinates(char **piece, int i, int j)
 {
-	int i;
-	int j;
-	int n;
+	int			n;
 	static int	arr[8];
-	int	x_start;
-	int y_start;
+	int			x_start;
+	int			y_start;
 
 	j = -1;
 	i = -1;
@@ -76,7 +74,7 @@ int		read_file(char *file, t_board *main_board)
 			{
 				if (verify_piece(tmp, buf) == 1)
 				{
-					arr = get_coordinates(tmp->piece);
+					arr = get_coordinates(tmp->piece, -1, -1);
 					tmp = add_lst_piece(tmp, buf, arr, a, i);
 					i++;
 				}
@@ -114,16 +112,16 @@ void	print_pieces(t_board *mst)
 	}
 }
 
-int     start_size(int square)
+int		start_size(int square)
 {
-    int ret;
+	int ret;
 
-    ret = 0;
-    while (((ret * ret)/square) < 1)
-    {
-        ret++;
-    }
-    return (ret);
+	ret = 0;
+	while (((ret * ret)/square) < 1)
+	{
+		ret++;
+	}
+	return (ret);
 }
 
 int		get_width(char **tab, int row, int col)
@@ -186,23 +184,28 @@ int		get_height(char **tab, int row, int col)
 void	set_dimensions(t_board *mst)
 {
 	t_piece	*tmp;
-	t_piece	*head;
 	int		i;
 
 	i = 1;
-	head = mst->tmp_board;
-	if (head)
+	mst->cur = 0;
+	mst->valid = 0;
+	tmp = mst->tmp_board;
+	if (tmp)
 	{
-		head->width = get_width(head->piece, 0, 0);
-		head->height = get_height(head->piece, 0, 0);
-		tmp = head->next;
-		while (++i < mst->tetra_count)
+		tmp->width = get_width(tmp->piece, 0, 0);
+		tmp->height = get_height(tmp->piece, 0, 0);
+		tmp->row = 0;
+		tmp->col = 0;
+		tmp = tmp->next;
+		while (i++ < mst->tetra_count)
 		{
 			tmp->width = get_width(tmp->piece, 0, 0);
 			tmp->height = get_height(tmp->piece, 0, 0);
+			tmp->row = 0;
+			tmp->col = 0;
 			tmp = tmp->next;
 		}
-		mst->tetra_count = (i - 1);
+		tmp->next = NULL;
 	}
 }
 
@@ -215,6 +218,18 @@ void	f_init(t_board *mst)
 	}
 }
 
+void	print_mst_board(t_board *mst)
+{
+	int	i;
+
+	i = 0;
+	while (mst->solved_board[i] != NULL)
+	{
+		ft_putstr(mst->solved_board[i++]);
+		ft_putchar('\n');
+	}
+}
+
 void	fillit(char *file)
 {
 	t_board	*main_board;
@@ -224,14 +239,11 @@ void	fillit(char *file)
 	{
 		if (read_file(file, main_board) > 0)
 		{
-			printf("File read...\n\nInitializing Solution Board...\n\n");
 			f_init(main_board);
-			printf("initialization complete...\n\nWorking on a solution...\n\n");
 			solve(main_board);
-			printf("Solution Found...\n\nPrinting solution board...\n\n");
-			print_pieces(main_board);
+			print_mst_board(main_board);
 		}
 		else
-			ft_putstr("What exactly are you trying to do?\n");
+			ft_putstr("error\n");
 	}
 }
