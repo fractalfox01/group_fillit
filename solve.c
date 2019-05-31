@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:19:41 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/22 18:18:32 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 11:56:05 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,14 @@ void	generate_solution_board(t_board *main_board, int size)
     ft_bzero(line, 1);
     if (main_board && size >= 1)
     {
-        main_board->solved_board = (char **)malloc(sizeof(char *) * (size + 1));
+        main_board->solved_board = (char **)malloc(sizeof(char *) * (size));
         while (i++ < size)
         {
             tmp = ft_strnew((size_t)(size + 1));
             ft_memset(tmp, '.', (size_t)size);
             tmp[size] = 'Z';
             line = ft_strjoin(line, tmp);
-            free(tmp);
-            ft_bzero(tmp, (size_t)size);
+            ft_strdel(&tmp);
         }
         main_board->solved_board = ft_strsplit(line, 'Z');
 		main_board->board_size = size;
@@ -129,24 +128,19 @@ int    clear_tetra(t_board *mst)
     int j;
     int b_max;
 	t_piece *tetra;
-
-    i = -1;
-    j = -1;
+    
 	tetra = get_piece(mst, mst->cur);
+	i = tetra->row;
+    j = tetra->col;
     b_max = (int)ft_strlen(mst->solved_board[0]);
 	if (!(tetra))
 		return (0);
 	else if (!(tetra->piece))
 		return (0);
-	while (++i < b_max)
-    {
-        while (++j < b_max)
-        {
-            if (mst->solved_board[i][j] == tetra->p_num + 'A')
-                mst->solved_board[i][j] = '.';
-        }
-        j = -1;
-    }
+	mst->solved_board[i + tetra->sym_arr[1]][j + tetra->sym_arr[0]] = '.';
+	mst->solved_board[i + tetra->sym_arr[3]][j + tetra->sym_arr[2]] = '.';
+	mst->solved_board[i + tetra->sym_arr[5]][j + tetra->sym_arr[4]] = '.';
+	mst->solved_board[i + tetra->sym_arr[7]][j + tetra->sym_arr[6]] = '.';
 	return (1);
 }
 
@@ -159,32 +153,27 @@ int		check_area(t_board *mst, char **solution_board)
 	int	col = tetra->col;
 	int	row = tetra->row;
 	int good = 0;
-	int	i = 0;
 	
 	len = mst->board_size;
 	if (mst && solution_board)
 	{
-		while (i < 8)
+		if ((((row + tetra->sym_arr[1])) > (len - 1) || ((col + tetra->sym_arr[0])) > len) || \
+		(((row + tetra->sym_arr[3])) > (len - 1) || ((col + tetra->sym_arr[2])) > len) || \
+		(((row + tetra->sym_arr[5])) > (len - 1) || ((col + tetra->sym_arr[4])) > len) || \
+		(((row + tetra->sym_arr[7])) > (len - 1) || ((col + tetra->sym_arr[6])) > len))
+			return (5);
+		if (solution_board[row + (tetra->sym_arr[1])][col + (tetra->sym_arr[0])] == '.' && \
+		solution_board[row + (tetra->sym_arr[3])][col + (tetra->sym_arr[2])] == '.' && \
+		solution_board[row + (tetra->sym_arr[5])][col + (tetra->sym_arr[4])] == '.' && \
+		solution_board[row + (tetra->sym_arr[7])][col + (tetra->sym_arr[6])] == '.')
 		{
-			if (((row + tetra->sym_arr[i + 1])) > (len - 1) || ((col + tetra->sym_arr[i])) > len)
-				return (5);
-			i += 2;
-		}
-		if (solution_board[row + (tetra->sym_arr[1])][col + (tetra->sym_arr[0])] == '.')
-		{
-			if (solution_board[row + (tetra->sym_arr[3])][col + (tetra->sym_arr[2])] == '.')
-				if (solution_board[row + (tetra->sym_arr[5])][col + (tetra->sym_arr[4])] == '.')
-					if (solution_board[row + (tetra->sym_arr[7])][col + (tetra->sym_arr[6])] == '.')
-					{
-						good = 4;
-						map_piece(mst, tetra, tetra->col, tetra->row);
-					}
+			good = 4;
+			map_piece(mst, tetra, tetra->col, tetra->row);
+			return (4);
 		}
 		else
 			return (5);
 	}
-	if (good == 4)
-		return (4);
 	return (5);
 }
 
@@ -234,10 +223,7 @@ int		start_mapping(t_board *mst)
 	int	b = 0;
 
 	if ((b = check_area(mst, mst->solved_board)) == 4)
-	{
 		mst->cur += 1;
-		return (b);
-	}
 	return (b);
 }
 

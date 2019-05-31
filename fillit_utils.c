@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:23:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/21 12:50:13 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:33:45 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ t_piece	*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i)
 	ft_bzero(buf, a);
 	return (tmp);
 }
-

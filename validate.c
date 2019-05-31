@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:19:12 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/17 12:08:03 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 11:27:32 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,6 @@ int		verify_piece(t_piece *piece, char *buf)
 	j = -1;
 	if (buf[4] != '\n' || buf[9] != '\n' || buf[14] != '\n' || buf[19] != '\n')
 		return (-1);
-	// tab = (char **)malloc(sizeof(char *) * 5);
-	// while (a < 4)
-	// 	tab[a++] = ft_strnew(4);
-	// tab[4] = NULL;
 	tab = ft_strsplit(buf, '\n');
 	piece->piece = &*tab;
 	while (++i < 4)

@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/23 15:36:56 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:33:40 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,10 @@ int		get_width(char **tab, int row, int col)
 	width = 0;
 	test = ft_strdup("....");
 	if (!(tab))
+	{
+		ft_strdel(&test);
 		return (-1);
+	}
 	while (row < 4)
 	{
 		while (col < 4)
@@ -149,6 +152,7 @@ int		get_width(char **tab, int row, int col)
 	while (test[col] != '\0')
 		if (test[col++] == '#')
 			width++;
+	ft_strdel(&test);		
 	return (width);
 }
 
@@ -230,6 +234,44 @@ void	print_mst_board(t_board *mst)
 	}
 }
 
+void	operation_free(t_board *mst)
+{
+	t_piece *lptr;
+	t_piece *tmp;
+	int		i;
+	int		len;
+
+	i = 0;
+	len = ft_strlen(mst->solved_board[0]);
+	if (mst)
+	{
+		while (i < len)
+		{
+			ft_strdel(&mst->solved_board[i++]);
+		}
+		ft_memdel((void **)mst->solved_board);
+		free(mst->solved_board);
+		i = 0;
+		lptr = mst->tmp_board;
+		while (lptr)
+		{
+			while (i < 4 && lptr->piece)
+			{
+				ft_strdel(&lptr->piece[i]);
+				free(lptr->piece[i++]);
+				lptr->piece[i] = NULL;
+			}
+			i = 0;
+			ft_memdel((void **)&lptr->piece);
+			free((lptr->piece));
+			free(lptr->sym_arr);
+			tmp = lptr;
+			lptr = lptr->next;
+			tmp = NULL;
+		}
+	}
+}
+
 void	fillit(char *file)
 {
 	t_board	*main_board;
@@ -242,6 +284,7 @@ void	fillit(char *file)
 			f_init(main_board);
 			solve(main_board);
 			print_mst_board(main_board);
+			operation_free(main_board);
 		}
 		else
 			ft_putstr("error\n");
