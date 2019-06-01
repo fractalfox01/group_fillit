@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:19:12 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/31 11:27:32 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 15:51:15 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ int		check_vertical(int i, int j, char **tab)
 			count++;
 	}
 	if (i == 1 || i == 2)
-		{
-			if (tab[i + 1][j] == '#')
-				count++;
-			if (tab[i - 1][j] == '#')
-				count++;
-		}
+	{
+		if (tab[i + 1][j] == '#')
+			count++;
+		if (tab[i - 1][j] == '#')
+			count++;
+	}
 	return (count);
 }
-
 
 int		check_horizonal(int i, int j, char **tab)
 {
@@ -55,22 +54,22 @@ int		check_horizonal(int i, int j, char **tab)
 			count++;
 	}
 	if (j == 1 || j == 2)
-		{
-			if (tab[i][j - 1] == '#')
-				count++;
-			if (tab[i][j + 1] == '#')
-				count++;
-		}
+	{
+		if (tab[i][j - 1] == '#')
+			count++;
+		if (tab[i][j + 1] == '#')
+			count++;
+	}
 	return (count);
 }
 
 int		verify_piece(t_piece *piece, char *buf)
 {
-	char **tab;
-	int	i;
-	int j;
-	int	count;
-	int	hash;
+	char	**tab;
+	int		i;
+	int		j;
+	int		count;
+	int		hash;
 
 	hash = 0;
 	count = 0;
@@ -102,7 +101,3 @@ int		verify_piece(t_piece *piece, char *buf)
 		return (1);
 	return (0);
 }
-
-
-
-

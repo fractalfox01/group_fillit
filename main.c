@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:26:21 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/04/24 11:26:53 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/05/31 14:35:27 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int		main(int ac, char **av)
 		fillit(av[1]);
 	}
 	else
-		ft_putstr("some usage text\n");
+		ft_putstr("please enter a valid file as an argument\n");
 	return (0);
 }
