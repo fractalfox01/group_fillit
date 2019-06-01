@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:23:45 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/31 15:48:08 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:10:04 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			*get_coordinates(char **piece, int i, int j)
 t_piece		*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i)
 {
 	tmp->next = (t_piece *)malloc(sizeof(t_piece) * 1);
-	tmp->sym_arr = int8_arr_malloc(arr);
+	tmp->sym_arr = arr;
 	tmp->p_num = i;
 	tmp->col = 0;
 	tmp->row = 0;
