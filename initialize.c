@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 15:10:41 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/05/31 15:44:14 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:08:09 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ int		get_width(char **tab, int row, int col)
 	char	*test;
 
 	width = 0;
-	test = ft_strdup("....");
 	if (!(tab))
-	{
-		ft_strdel(&test);
 		return (-1);
-	}
+	test = ft_strdup("....");
 	while (row < 4)
 	{
 		while (col < 4)
@@ -82,6 +79,7 @@ int		get_height(char **tab, int row, int col)
 	while (test[col] != '\0')
 		if (test[col++] == '#')
 			height++;
+	ft_strdel(&test);
 	return (height);
 }
 
