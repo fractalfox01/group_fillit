@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/31 15:35:28 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:11:29 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	fillit(char *file)
 			f_init(main_board);
 			solve(main_board);
 			print_mst_board(main_board);
-			operation_free(main_board);
+			//operation_free(main_board);
 		}
 		else
 			ft_putstr("error\n");
