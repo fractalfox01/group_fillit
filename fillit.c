@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/01 16:11:29 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/01 16:17:33 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ int		read_file(char *file, t_board *main_board)
 		tmp = main_board->tmp_b;
 		while ((a = read(fd, buf, 21)) == 20 || a == 21)
 		{
-			if ((a == 20) || ((a == 21) && (buf[20] == '\n')))
-			{
-				if (verify_piece(tmp, buf) == 1)
-				{
-					arr = get_coordinates(tmp->piece, -1, -1);
-					tmp = add_lst_piece(tmp, buf, arr, a, i);
-					i++;
-				}
-				else
-					return (-1);
-			}
+			if (((a == 20) || ((a == 21) && (buf[20] == '\n'))) && \
+			verify_piece(tmp, buf) == 1)
+				tmp = add_lst_piece(tmp, buf, (arr = get_coordinates(tmp->piece, -1, -1)), a, i++);
 		}
+		if (a != 0)
+			return (-1);
 		return ((main_board->tet_count = i));
 	}
 	return (0);
