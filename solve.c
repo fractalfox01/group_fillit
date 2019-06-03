@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:19:41 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/01 16:39:10 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:42:51 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ void		generate_solution_board(t_board *main_board, int size)
 	ft_bzero(line, 1);
 	if (main_board && size >= 1)
 	{
-		main_board->slv_b = (char **)malloc(sizeof(char *) * (size));
 		while (i++ < size)
 		{
-			tmp = ft_strnew((size_t)(size));
+			tmp = ft_strnew((size_t)(size + 1));
 			ft_memset(tmp, '.', (size_t)size);
 			tmp[size] = 'Z';
-			ptr = ft_strjoin(line, tmp);
+			ptr = line;
 			ft_strdel(&line);
-			line = &*ptr;
+			line = ft_strjoin(ptr, tmp);
 			ft_strdel(&tmp);
 		}
 		main_board->slv_b = ft_strsplit(line, 'Z');

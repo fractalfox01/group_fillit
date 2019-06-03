@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/02 20:02:30 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 13:26:13 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,33 +66,27 @@ void	operation_free(t_board *mst)
 	int		len;
 
 	i = 0;
-	len = ft_strlen(mst->slv_b[0]);
 	if (mst)
 	{
-		while (i < len)
-		{
+		while (i < mst->b_size)
 			ft_strdel(&mst->slv_b[i++]);
-		}
-		ft_memdel((void **)mst->slv_b);
 		free(mst->slv_b);
 		i = 0;
 		lptr = mst->tmp_b;
-		while (lptr)
+		while (lptr->piece)
 		{
-			while (i < 4 && lptr->piece)
-			{
-				ft_strdel(&lptr->piece[i]);
-				free(lptr->piece[i++]);
-				lptr->piece[i] = NULL;
-			}
+			while (i < 4)
+				ft_strdel(&lptr->piece[i++]);
 			i = 0;
-			ft_memdel((void **)&lptr->piece);
-			free((lptr->piece));
-			free(lptr->sym_arr);
+			ft_memdel((void **)&lptr->sym_arr);
 			tmp = lptr;
 			lptr = lptr->next;
-			tmp = NULL;
+			ft_memdel((void **)tmp);
+			free(tmp);
 		}
+		free(lptr);
+		free(mst);
+		return ;
 	}
 }
 
@@ -106,10 +100,10 @@ void	fillit(char *file)
 		if (read_file(file, main_board, 0) > 0)
 		{
 			f_init(main_board);
-			//system("leaks fillit");
 			solve(main_board);
 			print_mst_board(main_board);
-			//operation_free(main_board);
+			operation_free(main_board);
+			//system("leaks fillit");
 		}
 		else
 			ft_putstr("error\n");
