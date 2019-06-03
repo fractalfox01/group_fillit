@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/31 17:02:41 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/02 20:00:47 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i);
 void					print_board(t_board *main_board);
 void					print_pieces(t_board *mst);
 void					fillit(char *file);
-int						read_file(char *file, t_board *n_board);
+int						read_file(char *file, t_board *n_board, int i);
 t_board					*new_board(int size);
 int						is_valid_char(char c);
 char					**error(void);
