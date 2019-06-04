@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 15:10:41 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/06/03 12:43:32 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 17:57:49 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,21 @@ void	set_dimensions(t_board *mst)
 	{
 		tmp->width = get_width(tmp->piece, 0, 0);
 		tmp->height = get_height(tmp->piece, 0, 0);
-		tmp->row = 0;
-		tmp->col = 0;
+		// tmp->row = 0;
+		// tmp->col = 0;
 		tmp = tmp->next;
 		while (i++ < mst->tet_count)
 		{
 			tmp->width = get_width(tmp->piece, 0, 0);
 			tmp->height = get_height(tmp->piece, 0, 0);
-			tmp->row = 0;
-			tmp->col = 0;
+			// tmp->row = 0;
+			// tmp->col = 0;
 			tmp = tmp->next;
 		}
-		tmp->next = NULL;
 	}
+	tmp->piece = NULL;
+	ft_memdel((void **)&tmp);
+	tmp = NULL;
 }
 
 void	f_init(t_board *mst)

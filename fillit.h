@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/02 20:00:47 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 16:47:09 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "libft/get_next_line.h"
 # include "libft/libft.h"
 
 typedef struct			s_tetfile
@@ -45,12 +44,11 @@ void					f_init(t_board *mst);
 int     				start_size(int square);
 void					set_length(t_board *main_board);
 t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i);
-void					print_board(t_board *main_board);
-void					print_pieces(t_board *mst);
+void					print_mst_board(t_board *mst);
 void					fillit(char *file);
-int						read_file(char *file, t_board *n_board, int i);
+int						read_file(char *file, t_board *n_board, int i, int flag);
 t_board					*new_board(int size);
-int						is_valid_char(char c);
+//int						is_valid_char(char c);
 char					**error(void);
 int						verify_file(t_board *main_board);
 int						verify_tetra(char **tab, int i, int j, int hash);
