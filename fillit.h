@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/03 16:47:09 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 19:58:12 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct			s_board
 	int					valid;
 }						t_board;
 
+void					operation_free(t_board *mst);
 void					f_init(t_board *mst);
 int     				start_size(int square);
 void					set_length(t_board *main_board);
