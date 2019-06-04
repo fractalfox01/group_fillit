@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:19:12 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/05/31 15:51:15 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/04 12:17:05 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,15 @@ int		check_horizonal(int i, int j, char **tab)
 	return (count);
 }
 
-int		verify_piece(t_piece *piece, char *buf)
+int		verify_piece(t_piece *piece, char *buf, int i, int j)
 {
 	char	**tab;
-	int		i;
-	int		j;
 	int		count;
 	int		hash;
 
+
 	hash = 0;
 	count = 0;
-	i = -1;
-	j = -1;
 	if (buf[4] != '\n' || buf[9] != '\n' || buf[14] != '\n' || buf[19] != '\n')
 		return (-1);
 	tab = ft_strsplit(buf, '\n');

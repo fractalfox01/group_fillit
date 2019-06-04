@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/03 19:58:12 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 12:29:21 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void					operation_free(t_board *mst);
 void					f_init(t_board *mst);
 int     				start_size(int square);
 void					set_length(t_board *main_board);
-t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int a, int i);
+t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int i);
 void					print_mst_board(t_board *mst);
 void					fillit(char *file);
 int						read_file(char *file, t_board *n_board, int i, int flag);
 t_board					*new_board(int size);
-//int						is_valid_char(char c);
+t_piece					*r_h(t_piece *tmp, char *buf, int a, int i);
 char					**error(void);
 int						verify_file(t_board *main_board);
 int						verify_tetra(char **tab, int i, int j, int hash);
@@ -59,8 +59,8 @@ int						c_chk(int k, int i, int j, char **block);
 void					normalize_blocks(t_board *main_board);
 void					generate_solution_board(t_board *main_board, int size);
 void					solve(t_board *main_board);
-int						verify_piece(t_piece *piece, char *buf);
-int						*get_coordinates(char **piece, int i, int j);
+int						verify_piece(t_piece *piece, char *buf, int i, int j);
+int						*get_coordinates(char **piece, int i, int j, int s_x);
 t_piece					*get_piece(t_board *mst, int cur);
 int						start_mapping(t_board *mst);
 int						check_area(t_board *mst, char **solution_board);

@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 16:38:53 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/06/03 16:18:59 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 07:38:38 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ t_piece		*get_piece(t_board *mst, int cur)
 
 int			update_coord(t_board *mst, int cur)
 {
-	int len = mst->b_size;
-	t_piece *tetra = get_piece(mst, cur);
+	int		len;
+	t_piece *tetra;
+
+	len = mst->b_size;
+	tetra = get_piece(mst, cur);
 	if (len)
 	{
 		if ((tetra->col) == (len - 1) && (tetra->row + 1) < len)
@@ -55,10 +58,10 @@ int			update_coord(t_board *mst, int cur)
 
 int			clear_tetra(t_board *mst)
 {
-	int i;
-	int j;
-	int b_max;
-	t_piece *tetra;
+	int		i;
+	int		j;
+	int		b_max;
+	t_piece	*tetra;
 
 	tetra = get_piece(mst, mst->cur);
 	i = tetra->row;
@@ -75,7 +78,7 @@ int			clear_tetra(t_board *mst)
 	return (1);
 }
 
-int	check_tmp(t_board *mst, t_piece *tmp)
+int			check_tmp(t_board *mst, t_piece *tmp)
 {
 	int	i;
 
@@ -98,7 +101,7 @@ int	check_tmp(t_board *mst, t_piece *tmp)
 	return (0);
 }
 
-int		backtrack(t_board *mst)
+int			backtrack(t_board *mst)
 {
 	t_piece *tmp;
 	int		len;
