@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   backtrack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 16:38:53 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/05/31 16:48:54 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/03 16:18:59 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,15 @@ int			clear_tetra(t_board *mst)
 
 int	check_tmp(t_board *mst, t_piece *tmp)
 {
+	int	i;
+
+	i = 0;
 	if (tmp)
 	{
 		if (tmp->p_num == 0)
 		{
+			while (i < mst->b_size)
+				ft_strdel(&mst->slv_b[i++]);
 			mst->b_size += 1;
 			free(mst->slv_b);
 			zero_tetra(mst);

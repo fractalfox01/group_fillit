@@ -10,3 +10,8 @@ fclean: clean
 	@rm -r fillit.dSYM 2>/dev/null || echo "not found..."
 
 re: fclean all
+
+rebuild:
+	make fclean
+	make all
+	clear
