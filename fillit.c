@@ -6,7 +6,7 @@
 /*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/03 18:09:52 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/03 19:46:29 by tvandivi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	fillit(char *file)
 			solve(main_board);
 			print_mst_board(main_board);
 			operation_free(main_board);
-			system("leaks fillit");
+			//system("leaks fillit");
 		}
 		else
 			ft_putstr("error\n");
