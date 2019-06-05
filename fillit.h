@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:25:17 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/04 12:29:21 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 17:39:49 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ typedef struct			s_board
 
 void					operation_free(t_board *mst);
 void					f_init(t_board *mst);
-int     				start_size(int square);
+int						start_size(int square);
 void					set_length(t_board *main_board);
-t_piece					*add_lst_piece(t_piece *tmp, char *buf, int *arr, int i);
+t_piece					*add_lst_pce(t_piece *tmp, char *buf, int *arr, int i);
 void					print_mst_board(t_board *mst);
 void					fillit(char *file);
-int						read_file(char *file, t_board *n_board, int i, int flag);
+int						read_f(char *file, t_board *n_board, int i, int flag);
 t_board					*new_board(int size);
 t_piece					*r_h(t_piece *tmp, char *buf, int a, int i);
 char					**error(void);
@@ -64,7 +64,7 @@ int						*get_coordinates(char **piece, int i, int j, int s_x);
 t_piece					*get_piece(t_board *mst, int cur);
 int						start_mapping(t_board *mst);
 int						check_area(t_board *mst, char **solution_board);
-void					map_piece(t_board *mst, t_piece *tetra, int col, int row);
+void					map_pc(t_board *mst, t_piece *tetra, int col, int row);
 int						backtrack(t_board *mst);
 int						update_coord(t_board *mst, int cur);
 void					zero_tetra(t_board *mst);

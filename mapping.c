@@ -6,13 +6,13 @@
 /*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 16:56:39 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/05/31 16:59:59 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/04 17:38:28 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		map_piece(t_board *mst, t_piece *tetra, int col, int row)
+void		map_pc(t_board *mst, t_piece *tetra, int col, int row)
 {
 	if (mst && tetra)
 	{
@@ -48,7 +48,7 @@ int			check_area(t_board *mst, char **solution_board)
 		solution_board[row + (tetra->sym_arr[7])][col + (tetra->sym_arr[6])] == '.')
 		{
 			good = 4;
-			map_piece(mst, tetra, tetra->col, tetra->row);
+			map_pc(mst, tetra, tetra->col, tetra->row);
 			return (4);
 		}
 		else

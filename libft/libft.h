@@ -6,7 +6,7 @@
 /*   By: ezhukova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 12:30:51 by ezhukova          #+#    #+#             */
-/*   Updated: 2019/03/08 17:03:14 by ezhukova         ###   ########.fr       */
+/*   Updated: 2019/06/04 17:44:18 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 
 typedef struct		s_list
 {

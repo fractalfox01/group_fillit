@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 17:42:08 by ezhukova          #+#    #+#             */
+/*   Updated: 2019/06/04 17:43:10 by ezhukova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		f_slv_b(char **slv_b, int size)
@@ -33,14 +45,13 @@ void	operation_free(t_board *mst)
 	t_piece *lptr;
 	t_piece *tmp;
 	int		i;
-	int		len;
 
 	i = 0;
 	if (mst)
 	{
 		i = 0;
-		lptr = mst->tmp_b;	
-		while (i < mst->tet_count)
+		lptr = mst->tmp_b;
+		while (i++ < mst->tet_count)
 		{
 			f_piece(lptr);
 			if (lptr->sym_arr)
@@ -49,10 +60,8 @@ void	operation_free(t_board *mst)
 			lptr = lptr->next;
 			ft_memdel((void **)tmp);
 			free(tmp);
-			i++;
 		}
 		f_slv_b(mst->slv_b, mst->b_size);
-		//lptr = NULL;
 		free(mst);
 		mst = NULL;
 		return ;

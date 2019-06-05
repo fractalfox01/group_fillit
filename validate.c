@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:19:12 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/04 12:17:05 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 18:16:54 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,25 @@ int		check_horizonal(int i, int j, char **tab)
 	return (count);
 }
 
+/*int		count_hashes(char **tab, int i, int j, int *count)
+{
+	int hash;
+
+	hash = 0;
+	if (tab[i][j] == '#')
+	{
+		*count += check_horizonal(i, j, tab);
+		*count += check_vertical(i, j, tab);
+		hash++;
+	}
+	return (hash);
+}*/
+
 int		verify_piece(t_piece *piece, char *buf, int i, int j)
 {
 	char	**tab;
 	int		count;
 	int		hash;
-
 
 	hash = 0;
 	count = 0;
@@ -82,6 +95,7 @@ int		verify_piece(t_piece *piece, char *buf, int i, int j)
 		{
 			if (tab[i][j] == '.' || tab[i][j] == '#')
 			{
+				//hash = count_hashes(tab, i, j, &count);
 				if (tab[i][j] == '#')
 				{
 					count += check_horizonal(i, j, tab);

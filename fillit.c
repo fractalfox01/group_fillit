@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 18:35:26 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/04 12:44:16 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 17:36:27 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		read_file(char *file, t_board *main_board, int i, int flag)
+int		read_f(char *file, t_board *main_board, int i, int flag)
 {
 	int		fd;
 	int		a;
@@ -60,7 +60,7 @@ void	fillit(char *file)
 	main_board = (t_board *)malloc(sizeof(t_board) * 1);
 	if (file)
 	{
-		if (read_file(file, main_board, 0, 1) > 0)
+		if (read_f(file, main_board, 0, 1) > 0)
 		{
 			f_init(main_board);
 			if (main_board->tet_count < 27)

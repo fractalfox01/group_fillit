@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezhukova <ezhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:19:41 by tvandivi          #+#    #+#             */
-/*   Updated: 2019/06/03 16:22:18 by tvandivi         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:07:13 by ezhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		generate_solution_board(t_board *main_board, int size)
 		main_board->slv_b = ft_strsplit(line, 'Z');
 		ft_strdel(&line);
 		main_board->b_size = size;
-	} 
+	}
 }
 
 void		zero_tetra(t_board *mst)
