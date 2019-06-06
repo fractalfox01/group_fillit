@@ -63,17 +63,17 @@ int		check_horizonal(int i, int j, char **tab)
 	return (count);
 }
 
-int		count_hashes(char **tab, int i, int j)
+int		count_connect(char **tab, int i, int j)
 {
-	int hash;
+	int count;
 
-	hash = 0;
+	count = 0;
 	if (tab[i][j] == '#')
 	{
-		hash += check_horizonal(i, j, tab);
-		hash += check_vertical(i, j, tab);
+		count += check_horizonal(i, j, tab);
+		count += check_vertical(i, j, tab);
 	}
-	return (hash);
+	return (count);
 }
 
 int		verify_piece(t_piece *piece, char *buf, int i, int j)
@@ -94,7 +94,7 @@ int		verify_piece(t_piece *piece, char *buf, int i, int j)
 		{
 			if (tab[i][j] == '.' || tab[i][j] == '#')
 				if (tab[i][j] == '#' && hash++ < 5)
-					count += count_hashes(tab, i, j);
+					count += count_connect(tab, i, j);
 			if (tab[i][j] != '.' && tab[i][j] != '#')
 				return (-1);
 		}
