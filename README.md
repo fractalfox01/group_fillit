@@ -5,18 +5,26 @@
 <pre>
 <p>
 <h2>Intro - </h2>
-Fillit is a project that let you discover and/or familiarize yourself with a recurring problematic in programming: 
-  searching the optimal solution among a huge set of possi- bilities, in a respectable timing. In this particular project,
-  you will have to find a way to assemble a given Tetriminos set altogether in the smallest possible square.
-  A Tetriminos is a 4-blocks geometric figure you probably already heard of, thanks to the popular game Tetris.
+Fillit is a project that let you discover and/or familiarize yourself with a recurring
+  problematic in programming: searching the optimal solution among a huge set of 
+  possibilities, in a respectable timing. In this particular project,
+  you will have to find a way to assemble a given Tetriminos set altogether in the 
+  smallest possible square.
+  A Tetriminos is a 4-blocks geometric figure you probably already heard of, 
+  thanks to the popular game Tetris.
 </p>
 <p>
 <h2>
 Goals:
 </h2>
-Fillit is not about recoding Tetris, even if it’s still a variant of this game. Your program will take a file as parameter, which contains a list of Tetriminos, and arrange them in order to create the smallest square possible.
-  Obviously, your main goal is to find the smallest square in the minimal amount of time, despite an exponentially growing number of possibilities each time a piece is added.
-  You should think carefully about how you will structure your data and how to solve this problem, if you want your program answers before the next millenium.
+Fillit is not about recoding Tetris, even if it’s still a variant of this game. 
+  Your program will take a file as parameter, which contains a list of Tetriminos, 
+  and arrange them in order to create the smallest square possible.
+  Obviously, your main goal is to find the smallest square in the minimal 
+  amount of time, despite an exponentially growing number of possibilities each
+  time a piece is added.
+  You should think carefully about how you will structure your data and how to 
+  solve this problem, if you want your program answers before the next millenium.
 </p>
 <p>
 <h2>
@@ -26,46 +34,69 @@ General instructions
 • The allowed functions are : exit, open, close, write, read, malloc and free.
 • Your Makefile must compile your code without relinks.
 • It must contain the following rules : all, clean ,fclean and re.
-• You must compile your binary with the Wall, Wextra and Werror flags. Any other flag are forbidden , especially those for optimising purposes.
+• You must compile your binary with the Wall, Wextra and Werror flags. Any other 
+  flag are forbidden , especially those for optimising purposes.
 • The binary must be named fillit and located in the root directory of your repository.
-<pre>$>cat -e author
+<pre>
+$>cat -e author
 xlogin$
-ylogin$</pre>
-• You must submit a file called author containing your username followed by a ’\n’ at the root of your repository:
+ylogin$
+</pre>
+• You must submit a file called author containing your username followed by a ’\n’ at 
+  the root of your repository:
 • Your project cannot contain leaks.
 </p>
 <p>
 <h2>Program entry - </h2>
-Your executable must take only one parameter, a file which contains a list of Tetriminos to assemble. This file has a very specific format : every Tetrimino must exactly fit in a 4 by 4 chars square and all Tetrimino are separated by an newline each.
-If the number of parameters sent to your executable is not 1, your program must display its usage and exit properly. If you don’t know what a usage is, execute the command cp without arguments in your Shell. It will give you an idea. Your file should contain between 1 and 26 Tetriminos.
+Your executable must take only one parameter, a file which contains a list of 
+Tetriminos to assemble. This file has a very specific format: 
+every Tetrimino must exactly fit in a 4 by 4 chars square and all Tetrimino 
+are separated by an newline each.
+If the number of parameters sent to your executable is not 1, 
+your program must display its usage and exit properly. If you don’t know 
+what a usage is, execute the command cp without arguments in your Shell. 
+It will give you an idea. Your file should contain between 1 and 26 Tetriminos.
 The description of a Tetriminos must respect the following rules :
 • Precisely 4 lines of 4 characters, each followed by a new line (well... a 4x4 square).
 • A Tetrimino is a classic piece of Tetris composed of 4 blocks.
 • Each character must be either a block character(’#’ ) or an empty character (’.’).
-• Each block of a Tetrimino must touch at least one other block on any of his 4 sides (up, down, left and right).
+• Each block of a Tetrimino must touch at least one other block on any of his 
+4 sides (up, down, left and right).
 A few examples of valid descriptions of Tetriminos:
-<pre>....    ....    ####    ....    .##.    ....    .#..    ....    ....
+<pre>
+....    ....    ####    ....    .##.    ....    .#..    ....    ....
 ..##    ....    ....    ....    ..##    .##.    ###.    ##..    .##.
 ..#.    ..##    ....    ##..    ....    ##..    ....    #...    ..#.
-..#.    ..##    ....    ##..    ....    ....    ....    #...    ..#.</pre>
+..#.    ..##    ....    ##..    ....    ....    ....    #...    ..#.
+</pre>
 A few examples of invalid descriptions of Tetriminos
-<pre>####    ...#    ##...   #.      ....    ..##    ####    ,,,,    .HH.
+<pre>
+####    ...#    ##...   #.      ....    ..##    ####    ,,,,    .HH.
 ...#    ..#.    ##...   ##      ....    ....    ####    ####    HH..
 ....    .#..    ....    #.      ....    ....    ####    ,,,,    ....
-....    #...    ....            ....    ##..    ####    ,,,,    ....</pre>
-Because each Tetrimino fills only 4 of the 16 available boxes, it is possible to describe the same Tetrimino in multiple ways. However, a rotated Tetrimino describes a different Tetrimino from the original, in the case of this project. This means no rotation is possible on a Tetrimino, when you will arrange it with the others.
+....    #...    ....            ....    ##..    ####    ,,,,    ....
+</pre>
+Because each Tetrimino fills only 4 of the 16 available boxes, it is possible to 
+describe the same Tetrimino in multiple ways. However, a rotated Tetrimino describes
+a different Tetrimino from the original, in the case of this project. This means no
+rotation is possible on a Tetrimino, when you will arrange it with the others.
 Those Tetriminos are then perfectly equivalents on every aspect :
-<pre>##..    .##.    ..##    ....    ....    ....
+<pre>
+##..    .##.    ..##    ....    ....    ....
 #...    .#..    ..#.    ##..    .##.    ..##
 #...    .#..    ..#.    #...    .#..    ..#.
-....    ....    ....    #...    .#..    ..#.</pre>
+....    ....    ....    #...    .#..    ..#.
+</pre>
 These 5 Tetriminos are, for their part, 5 distincts Tetriminos on every aspect :
-<pre>##..    .###    ....    ....    ....
+<pre>
+##..    .###    ....    ....    ....
 #...    ...#    ...#    ....    .##.
 #...    ....    ...#    #...    .##.
-....    ....    ..##    ###.    ....</pre>
+....    ....    ..##    ###.    ....
+</pre>
 Finally, here is an example of a valid file your program must resolve:
-<pre>$> cat -e valid_sample.fillit
+<pre>
+$> cat -e valid_sample.fillit
 ...#$ 
 ...#$
 ...#$ 
@@ -85,9 +116,11 @@ $
 ..##$ 
 .##.$
 ....$ 
-$></pre>
+$>
+</pre>
 ...and an example of invalid file your program must reject for multiple reasons:
-<pre>$> cat -e invalid_sample.fillit
+<pre>
+$> cat -e invalid_sample.fillit
 ...#$
 ...#$ 
 ...#$
@@ -107,7 +140,8 @@ $
 ..##$
 .##.$ 
 ....$
-$></pre>
+$>
+</pre>
 <p>
 <h2>The smallest square</h2>
 The goal of this project is to arrange every Tetriminos with each others in order to make the smallest possible square. But in some cases, this square should contains holes when some given pieces won’t fit in perfectly with others.
