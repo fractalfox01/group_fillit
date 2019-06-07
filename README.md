@@ -150,7 +150,7 @@ Tetriminos are ordered by they apparition order in the file. Among all the possi
 
 __Example :__
 
-Considering the two following Tetriminos (’#’ will be replaced by digits for under- standing purposes):
+Considering the two following Tetriminos (’#’ will be replaced by digits for understanding purposes):
 <pre>
 1...     ....
 1...     ....
