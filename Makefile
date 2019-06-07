@@ -6,7 +6,7 @@
 #    By: tvandivi <tvandivi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/04 15:07:57 by ezhukova          #+#    #+#              #
-#    Updated: 2019/06/06 15:34:33 by tvandivi         ###   ########.fr        #
+#    Updated: 2019/06/07 09:09:40 by tvandivi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = fillit
 SRC = fillit.c fillit_utils.c free_utils.c main.c solve.c \
 	validate.c initialize.c backtrack.c mapping.c
 
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 OBJ = fillit.o fillit_utils.o free_utils.o main.o solve.o \
 	validate.o initialize.o backtrack.o mapping.o
