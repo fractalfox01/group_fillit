@@ -14,7 +14,7 @@ Fillit is a project that let you discover and/or familiarize yourself with a rec
 <h2>
 Goals:
 </h2>
-Fillit is not about recoding Tetris, even if it’s still a variant of this game. Your pro- gram will take a file as parameter, which contains a list of Tetriminos, and arrange them in order to create the smallest square possible.
+Fillit is not about recoding Tetris, even if it’s still a variant of this game. Your program will take a file as parameter, which contains a list of Tetriminos, and arrange them in order to create the smallest square possible.
   Obviously, your main goal is to find the smallest square in the minimal amount of time, despite an exponentially growing number of possibilities each time a piece is added.
   You should think carefully about how you will structure your data and how to solve this problem, if you want your program answers before the next millenium.
 </p>
@@ -32,7 +32,7 @@ General instructions
 xlogin$
 ylogin$</pre>
 • You must submit a file called author containing your username followed by a ’\n’ at the root of your repository:
-• Your project cannot leaks.
+• Your project cannot contain leaks.
 </p>
 <p>
 <h2>Program entry - </h2>
