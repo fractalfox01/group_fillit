@@ -2,6 +2,35 @@
 
 <h2>A group project at 42:</h2>
 <h3><i>Written By: <a href="https://github.com/katezhu">katezhu</a> and <a href="https://github.com/fractalfox01">Tommy V.</a></i></h3>
+<h3>                          Using This Program:</h3>
+ <p>
+    <h4>First clone the repo:</h4>
+    <pre>
+    $> git clone https://github.com/fractalfox01/group_fillit.git fillit
+    </pre>
+    <h4>Change directory into your cloned directory</h4>
+    <pre>
+    $> cd filllit; ls
+    libft/    author        fillit_utils.c  mapping.c
+    tests/    backtrack.c   free_utils.c    solve.c
+    Makefile  fillit.c      initialize.c    validate.c
+    README.md fillit.h      main.c
+    $>
+    </pre>
+    <h4>Compile the program and run against included tests ( Located in tests/      directory )</h4>
+    <pre>
+    $> make all
+    $> compiling...
+    $> ./fillit tests/sample2.fillit
+    DDAA
+    CDDA
+    CCCA
+    BBBB
+    $>
+    </pre>
+    </pre>
+ </p>
+</pre>
 <pre>
 <p>
 <h2>Intro - </h2>
@@ -42,8 +71,8 @@ $>cat -e author
 xlogin$
 ylogin$
 </pre>
-• You must submit a file called author containing your username followed by a ’\n’ at 
-  the root of your repository:
+• You must submit a file called author containing your username followed by a ’\n’ 
+    at the root of your repository:
 • Your project cannot contain leaks.
 </p>
 <p>
@@ -77,10 +106,10 @@ A few examples of invalid descriptions of Tetriminos
 ....    #...    ....            ....    ##..    ####    ,,,,    ....
 </pre>
 Because each Tetrimino fills only 4 of the 16 available boxes, it is possible to 
-describe the same Tetrimino in multiple ways. However, a rotated Tetrimino describes
-a different Tetrimino from the original, in the case of this project. This means no
-rotation is possible on a Tetrimino, when you will arrange it with the others.
-Those Tetriminos are then perfectly equivalents on every aspect :
+describe the same Tetrimino in multiple ways. However, a rotated Tetrimino
+describes a different Tetrimino from the original, in the case of this project. 
+This means no rotation is possible on a Tetrimino, when you will arrange it with 
+the others.Those Tetriminos are then perfectly equivalents on every aspect :
 <pre>
 ##..    .##.    ..##    ....    ....    ....
 #...    .#..    ..#.    ##..    .##.    ..##
@@ -144,20 +173,28 @@ $>
 </pre>
 <p>
 <h2>The smallest square</h2>
-The goal of this project is to arrange every Tetriminos with each others in order to make the smallest possible square. But in some cases, this square should contains holes when some given pieces won’t fit in perfectly with others.
-Even if they are embedded in a 4x4 square, each Tetrimino is defined by its mini- mal boundaries (their ’#’). The 12 remaining empty characters will be ignored for the Tetriminos assemble process.
-Tetriminos are ordered by they apparition order in the file. Among all the possible candidates for the smallest square, we only accept the one where Tetriminos is placed on their most upper-left position.
+The goal of this project is to arrange every Tetriminos with each others in order 
+to make the smallest possible square. But in some cases, this square should 
+contains holes when some given pieces won’t fit in perfectly with others.
+Even if they are embedded in a 4x4 square, each Tetrimino is defined by its 
+minimal boundaries (their ’#’). The 12 remaining empty characters will be ignored 
+for the Tetriminos assemble process.
+Tetriminos are ordered by they apparition order in the file. Among all the 
+possible candidates for the smallest square, we only accept the one where 
+Tetriminos is placed on their most upper-left position.
 
 __Example :__
 
-Considering the two following Tetriminos (’#’ will be replaced by digits for understanding purposes):
+Considering the two following Tetriminos (’#’ will be replaced by digits for 
+understanding purposes):
 <pre>
 1...     ....
 1...     ....
 1... AND ..22
 1...     ..22
 </pre>
-The smallest square you can make with those 2 pieces is 4-char wide, but there is many possible versions that you can see right below:
+The smallest square you can make with those 2 pieces is 4-char wide, but there is 
+many possible versions that you can see right below:
 <pre>
 a)      b)      c)      d)      e)      f)
 122.    1.22    1...    1...    1...    1...
@@ -179,8 +216,11 @@ According to the rule above, the right solution is then a)
 </p>
 <p>
 <h2>Program output -</h2>
-Your program must display the smallest assembled square on the standard output. To identify each Tetrimino in the square solution, you will assign a capital letter to each Tetrimino, starting with ’A’ and increasing for each new Tetrimino.
-If the file contains at least one error, your program must display error on the stan- dard output followed by a newline and have to exit properly.
+Your program must display the smallest assembled square on the standard output. To 
+identify each Tetrimino in the square solution, you will assign a capital letter 
+to each Tetrimino, starting with ’A’ and increasing for each new Tetrimino.
+If the file contains at least one error, your program must display error on the 
+standard output followed by a newline and have to exit properly.
 
 __Example :__
 
@@ -285,4 +325,3 @@ $>
 </pre>
 </p>
 </p>
-</pre>
