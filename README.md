@@ -21,7 +21,7 @@
     <pre>
     $> make all
     $> compiling...
-    $> ./fillit tests/sample2.fillit
+    $> ./fillit tests/valid2.fillit
     DDAA
     CDDA
     CCCA
