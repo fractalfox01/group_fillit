@@ -1,0 +1,7 @@
+$> time ./fillit tests/5_1.fillit      
+AADDD
+AABBD
+CCBB.
+CCEEE
+....E
+./fillit tests/5_1.fillit  0.00s user 0.00s system 45% cpu 0.007 total

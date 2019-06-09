@@ -1,0 +1,11 @@
+$> time ./fillit tests/18_1.fillit 
+AABBBBC.H
+AADDD.C.H
+..EFD.CHH
+EEEFFFCPP
+GGGJJIPP.
+GRKKJILLL
+RRKMJIILO
+RNKMMQQOO
+NNNM..QQO
+./fillit tests/18_1.fillit  0.94s user 0.00s system 99% cpu 0.950 total

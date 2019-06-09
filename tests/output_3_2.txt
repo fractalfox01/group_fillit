@@ -1,0 +1,6 @@
+$> time ./fillit tests/3_2.fillit 
+BBB.
+CBAA
+CCA.
+.CA.
+./fillit tests/3_2.fillit  0.00s user 0.00s system 54% cpu 0.006 total

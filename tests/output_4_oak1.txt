@@ -1,0 +1,6 @@
+$> time ./fillit tests/4_of_a_kind1.fillit 
+ABCD
+ABCD
+ABCD
+ABCD
+./fillit tests/4_of_a_kind1.fillit  0.00s user 0.00s system 30% cpu 0.007 total

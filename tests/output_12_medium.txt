@@ -1,0 +1,9 @@
+$> time ./fillit tests/12_medium.fillit 
+KKAALLL
+KAAECLH
+KEEEC.H
+BBBBCHH
+IGGGCJJ
+IGFDDDJ
+IIFFFDJ
+./fillit tests/12_medium.fillit  17.39s user 0.07s system 99% cpu 17.568 total

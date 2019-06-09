@@ -1,0 +1,8 @@
+$> time ./fillit tests/9_easy.fillit 
+AABBCC
+AABBCC
+DDEEFF
+DDEEFF
+GGHHII
+GGHHII
+./fillit tests/9_easy.fillit  0.00s user 0.00s system 43% cpu 0.006 total

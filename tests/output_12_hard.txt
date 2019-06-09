@@ -1,0 +1,9 @@
+$> time ./fillit tests/12_hard.fillit 
+BLLLFFF
+BBLCC.F
+BECCKGG
+EEIIKKG
+EIIJJKG
+AADDJHH
+AADDJHH
+./fillit tests/12_hard.fillit  439.75s user 1.91s system 99% cpu 7:24.64 total

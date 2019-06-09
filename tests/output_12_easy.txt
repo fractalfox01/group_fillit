@@ -1,0 +1,9 @@
+$> time ./fillit tests/12_easy.fillit 
+ACEBBBB
+ACEDDDD
+ACEFFFF
+ACE.GIK
+HHHHGIK
+JJJJGIK
+LLLLGIK
+./fillit tests/12_easy.fillit  2.94s user 0.01s system 99% cpu 2.961 total

@@ -1,0 +1,8 @@
+$> time ./fillit tests/6_of_a_kind2.fillit 
+.A.B.C
+AABBCC
+ADBECF
+DDEEFF
+D.E.F.
+......
+./fillit tests/6_of_a_kind2.fillit  0.00s user 0.00s system 53% cpu 0.008 total

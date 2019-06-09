@@ -1,0 +1,10 @@
+$> time ./fillit tests/15_1.fillit 
+AABBCCDD
+.ABBCCDD
+.AEGGGF.
+EEEGKKFF
+MLLLKJJF
+MMLIKOJH
+MN.IOOJH
+NNNIIOHH
+./fillit tests/15_1.fillit  0.81s user 0.00s system 99% cpu 0.827 total

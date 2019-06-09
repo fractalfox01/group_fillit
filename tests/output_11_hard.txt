@@ -1,0 +1,10 @@
+$> time ./fillit tests/11_hard.fillit
+AABBCC..
+.AABBCC.
+DDEEFF..
+.DDEEFF.
+GGHHII..
+.GGHHII.
+JJKK....
+.JJKK...
+./fillit tests/11_hard.fillit  579.98s user 2.32s system 99% cpu 9:45.35 total

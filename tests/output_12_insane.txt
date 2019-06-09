@@ -1,0 +1,10 @@
+$> time ./fillit tests/12_insane.fillit 
+AABBCC..
+.AABBCC.
+DDEEFF..
+.DDEEFF.
+GGHHII..
+.GGHHII.
+JJKKLL..
+.JJKKLL.
+./fillit tests/12_insane.fillit  576.75s user 2.41s system 99% cpu 9:42.62 total
