@@ -18,7 +18,7 @@
     $>
     </pre>
     <h4>Compile the program and run against included tests ( Located in tests/      directory )</h4>
-    <p>The valid2.fillit file contains the following blocks</p>
+    <p>The 12_hard.fillit file contains the following blocks</p>
     <pre>
     A) ....   B) .#..   C) ....   D) ....   E) ....   F) .###
        .##.      .##.      ..##      .##.      ..#.      ...#
