@@ -44,6 +44,15 @@
     ./fillit tests/12_hard.fillit 439.75s user 1.91s system 99% cpu 7:24.64 total
     </pre>
     </pre>
+    The goal of this project is to arrange every Tetriminos with each others in order 
+    to make the smallest possible square. But in some cases, this square should 
+    contains holes when some given pieces won’t fit in perfectly with others.
+    Even if they are embedded in a 4x4 square, each Tetrimino is defined by its 
+    minimal boundaries (their ’#’). The 12 remaining empty characters will be ignored 
+    for the Tetriminos assemble process.
+    Tetriminos maintain the same order as they appear in the file. Among all the 
+    possible candidates for the smallest square, we only accept the one where 
+    tetriminos are placed on their most upper-left position.
  </p>
 </pre>
 <br/>
@@ -190,15 +199,6 @@ $>
 </pre>
 <p>
 <h2>The smallest square</h2>
-The goal of this project is to arrange every Tetriminos with each others in order 
-to make the smallest possible square. But in some cases, this square should 
-contains holes when some given pieces won’t fit in perfectly with others.
-Even if they are embedded in a 4x4 square, each Tetrimino is defined by its 
-minimal boundaries (their ’#’). The 12 remaining empty characters will be ignored 
-for the Tetriminos assemble process.
-Tetriminos maintain the same order as they appear in the file. Among all the 
-possible candidates for the smallest square, we only accept the one where 
-tetriminos are placed on their most upper-left position.
 
 __Example :__
 
