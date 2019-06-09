@@ -20,20 +20,28 @@
     <h4>Compile the program and run against included tests ( Located in tests/      directory )</h4>
     <p>The valid2.fillit file contains the following blocks</p>
     <pre>
-    ....    ....    #...    ....
-    ##..    ####    ###.    ##..
-    .#..    ....    ....    .##.
-    .#..    ....    ....    ....
+    A) ....   B) .#..   C) ....   D) ....   E) ....   F) .###
+       .##.      .##.      ..##      .##.      ..#.      ...#
+       .##.      .#..      .##.      .##.      .##.      ....
+       ....      ....      ....      ....      .#..      ....
+    
+    G) ##..   H) ....   I) ....   J) ##..   K) .#..   L) ....
+       .#..      .##.      ..##      .#..      .##.      ###.
+       .#..      .##.      .##.      .#..      ..#.      .#..
+       ....      ....      ....      ....      ....      ....
     </pre>
     <pre>
     $> make all
     $> compiling...
-    $> ./fillit tests/valid2.fillit
-    DDAA
-    CDDA
-    CCCA
-    BBBB
-    $>
+    $> time ./fillit tests/12_hard.fillit 
+    BLLLFFF
+    BBLCC.F
+    BECCKGG
+    EEIIKKG
+    EIIJJKG
+    AADDJHH
+    AADDJHH
+    ./fillit tests/12_hard.fillit 439.75s user 1.91s system 99% cpu 7:24.64 total
     </pre>
     </pre>
  </p>
@@ -188,9 +196,9 @@ contains holes when some given pieces won’t fit in perfectly with others.
 Even if they are embedded in a 4x4 square, each Tetrimino is defined by its 
 minimal boundaries (their ’#’). The 12 remaining empty characters will be ignored 
 for the Tetriminos assemble process.
-Tetriminos are ordered by they apparition order in the file. Among all the 
+Tetriminos maintain the same order as they appear in the file. Among all the 
 possible candidates for the smallest square, we only accept the one where 
-Tetriminos is placed on their most upper-left position.
+tetriminos are placed on their most upper-left position.
 
 __Example :__
 
