@@ -17,8 +17,10 @@
     README.md fillit.h      main.c
     $>
     </pre>
-    <h4>Compile the program and run against included tests ( Located in tests/      directory )</h4>
-    <p>The 12_hard.fillit file contains the following blocks</p>
+    <h4>Compile the program and run against included tests ( Located in tests/      directory )or create your own</h4>
+    <i>careful though - larger boards can take a lonk time to solve.</i>
+    <br/>
+    <p>The 12_hard.fillit file contains the following blocks and takes around 7 and a half minutes to solve.</p>
     <pre>
     A) ....   B) .#..   C) ....   D) ....   E) ....   F) .###
        .##.      .##.      ..##      .##.      ..#.      ...#
@@ -43,7 +45,39 @@
     AADDJHH
     ./fillit tests/12_hard.fillit 439.75s user 1.91s system 99% cpu 7:24.64 total
     </pre>
+    <p>And The 17_1.fillit contains the following blocks and is solved in the blink 
+    of an eye.</p>
+    <pre>
+    A)      B)      C)      D)      E)      F)
+     ....    ####    ...#    .###    ...#    .#..
+     .##.    ....    ...#    ...#    .###    .###
+     .##.    ....    ...#    ....    ....    ....
+     ....    ....    ...#    ....    ....    ....
+    G)      H)      I)      J)      K)      L)
+     .###    ...#    ..#.    ..##    ..##    .###
+     .#..    ...#    ..#.    ...#    ..#.    ..#.
+     ....    ..##    ..##    ...#    ..#.    ....
+     ....    ....    ....    ....    ....    ....
+    M)      N)      O)      P)      Q)
+     ..#.    ..#.    ...#    ..##    .##.
+     ..##    .###    ..##    .##.    ..##
+     ..#.    ....    ...#    ....    ....
+     ....    ....    ....    ....    ....
     </pre>
+    <pre>
+    $> time ./fillit tests/17_1.fillit 
+    AABBBBC.H
+    AADDD.C.H
+    ..EFD.CHH
+    EEEFFFCI.
+    GGGJJKKI.
+    GLLLJKMII
+    ..L.JKMMO
+    .PPNQQMOO
+    PPNNNQQ.O
+    ./fillit tests/17_1.fillit 0.00s user 0.00s system 55% cpu 0.007 total
+    </pre>
+    <br/>
     The goal of this project is to arrange every Tetriminos with each others in order 
     to make the smallest possible square. But in some cases, this square should 
     contains holes when some given pieces won’t fit in perfectly with others.
