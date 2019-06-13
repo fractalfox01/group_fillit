@@ -18,7 +18,7 @@
     $>
     </pre>
     <h4>Compile the program and run against included tests ( Located in tests/      directory )or create your own</h4>
-    <i>careful though - larger boards can take a lonk time to solve.</i>
+    <i>careful though - larger boards can take a long time to solve.</i>
     <br/>
     <p>The 12_hard.fillit file contains the following blocks and takes around 7 and a half minutes to solve.</p>
     <pre>
